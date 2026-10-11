@@ -1,0 +1,1114 @@
+[
+  {
+    "id": "2020-10-26-harvest-finance",
+    "chain": "ethereum",
+    "attacker_effective": [
+      "0xf224ab004461540778a914ea397c589b677e27bb",
+      "0xc6028a9fa486f52efd2b95b949ac630d287ce0af"
+    ],
+    "txs": [],
+    "native": {
+      "0xf224ab004461540778a914ea397c589b677e27bb": {
+        "before_wei": "7612356700000000000",
+        "after_wei": "22417423425000000000",
+        "delta_wei": "14805066725000000000",
+        "window": [
+          11129473,
+          11129474
+        ],
+        "delta_eth": 14.805066725,
+        "delta_usd": 6071.866237809132
+      },
+      "0xc6028a9fa486f52efd2b95b949ac630d287ce0af": {
+        "before_wei": "0",
+        "after_wei": "0",
+        "delta_wei": "0",
+        "window": [
+          11129473,
+          11129474
+        ],
+        "delta_eth": 0,
+        "delta_usd": 0
+      }
+    },
+    "eth_price_usd": 410.12082894271,
+    "attacker_window_aggregate": {
+      "0xdac17f958d2ee523a2206206994597c13d831ec7": {
+        "symbol": "USDT",
+        "decimals": 6,
+        "price_usd": 1.000211762920933,
+        "net_raw": "0",
+        "net_human": 0,
+        "net_usd": 0
+      },
+      "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48": {
+        "symbol": "USDC",
+        "decimals": 6,
+        "price_usd": 0.9980556521168462,
+        "net_raw": "691781898529",
+        "net_human": 691781.898529,
+        "net_usd": 690436.833858991
+      },
+      "0xf0358e8c3cd5fa238a29301d0bea3d63a17bedbe": {
+        "symbol": "?",
+        "decimals": 18,
+        "price_usd": null,
+        "net_raw": "0",
+        "net_human": 0,
+        "net_usd": null
+      },
+      "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2": {
+        "symbol": "WETH",
+        "decimals": 18,
+        "price_usd": 410.3696703466782,
+        "net_raw": "20000000000000000000",
+        "net_human": 20,
+        "net_usd": 8207.393406933565
+      }
+    },
+    "attacker_per_address": {
+      "0xc6028a9fa486f52efd2b95b949ac630d287ce0af": {
+        "0xdac17f958d2ee523a2206206994597c13d831ec7": {
+          "symbol": "USDT",
+          "net_raw": "0",
+          "net_human": 0,
+          "net_usd": 0
+        },
+        "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48": {
+          "symbol": "USDC",
+          "net_raw": "691781898529",
+          "net_human": 691781.898529,
+          "net_usd": 690436.833858991
+        },
+        "0xf0358e8c3cd5fa238a29301d0bea3d63a17bedbe": {
+          "symbol": "?",
+          "net_raw": "0",
+          "net_human": 0,
+          "net_usd": null
+        },
+        "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2": {
+          "symbol": "WETH",
+          "net_raw": "20000000000000000000",
+          "net_human": 20,
+          "net_usd": 8207.393406933565
+        }
+      }
+    },
+    "total_net_usd_erc20": 698644.2272659246,
+    "total_net_usd_with_native": 704716.0935037337
+  },
+  {
+    "id": "2023-02-01-bonqdao",
+    "chain": "polygon",
+    "attacker_effective": [
+      "0xcacf2d28b2a5309e099f0c6e8c60ec3ddf656642",
+      "0xed596991ac5f1aa1858da66c67f7cfa76e54b5f1"
+    ],
+    "txs": [],
+    "native": {
+      "0xcacf2d28b2a5309e099f0c6e8c60ec3ddf656642": {
+        "before_wei": "9872236339444689871",
+        "after_wei": "8133802608257832297",
+        "delta_wei": "-1738433731186857574",
+        "window": [
+          38792977,
+          38793029
+        ],
+        "delta_eth": -1.7384337311868574,
+        "delta_usd": -2734.9038902236684
+      },
+      "0xed596991ac5f1aa1858da66c67f7cfa76e54b5f1": {
+        "before_wei": "0",
+        "after_wei": "0",
+        "delta_wei": "0",
+        "window": [
+          38792977,
+          38793029
+        ],
+        "delta_eth": 0,
+        "delta_usd": 0
+      }
+    },
+    "eth_price_usd": 1573.1999679714593,
+    "attacker_window_aggregate": {
+      "0xe3322702bedaaed36cddab233360b939775ae5f1": {
+        "symbol": "trb",
+        "decimals": 18,
+        "price_usd": 15.03,
+        "net_raw": "-20000000000000000000",
+        "net_human": -20,
+        "net_usd": -300.59999999999997
+      },
+      "0x35b2ece5b1ed6a7a99b83508f8ceeab8661e0632": {
+        "symbol": "albt",
+        "decimals": 18,
+        "price_usd": 0.10532615800872938,
+        "net_raw": "113813985010093645631281541",
+        "net_human": 113813985.01009364,
+        "net_usd": 11987589.76877628
+      },
+      "0x338eb4d394a4327e5db80d08628fa56ea2fd4b81": {
+        "symbol": "BEUR",
+        "decimals": 18,
+        "price_usd": 1.1,
+        "net_raw": "98658538917534656406859330",
+        "net_human": 98658538.91753465,
+        "net_usd": 108524392.80928813
+      }
+    },
+    "attacker_per_address": {
+      "0xed596991ac5f1aa1858da66c67f7cfa76e54b5f1": {
+        "0xe3322702bedaaed36cddab233360b939775ae5f1": {
+          "symbol": "trb",
+          "net_raw": "-20000000000000000000",
+          "net_human": -20,
+          "net_usd": -300.59999999999997
+        },
+        "0x35b2ece5b1ed6a7a99b83508f8ceeab8661e0632": {
+          "symbol": "albt",
+          "net_raw": "113813985010093645631281541",
+          "net_human": 113813985.01009364,
+          "net_usd": 11987589.76877628
+        },
+        "0x338eb4d394a4327e5db80d08628fa56ea2fd4b81": {
+          "symbol": "BEUR",
+          "net_raw": "98658538917534656406859330",
+          "net_human": 98658538.91753465,
+          "net_usd": 108524392.80928813
+        }
+      }
+    },
+    "total_net_usd_erc20": 120511681.97806442,
+    "total_net_usd_with_native": 120508947.0741742
+  },
+  {
+    "id": "2024-06-10-uwu-lend",
+    "chain": "ethereum",
+    "attacker_effective": [
+      "0xed1521ee1558af6087ad6bc6790ba1ee2a4174ec",
+      "0x13f3fee69160162a78284c64c1100a3df476d890"
+    ],
+    "txs": [],
+    "native": {
+      "0xed1521ee1558af6087ad6bc6790ba1ee2a4174ec": {
+        "before_wei": "0",
+        "after_wei": "0",
+        "delta_wei": "0",
+        "window": [
+          20061351,
+          20061352
+        ],
+        "delta_eth": 0,
+        "delta_usd": 0
+      },
+      "0x13f3fee69160162a78284c64c1100a3df476d890": {
+        "before_wei": "0",
+        "after_wei": "0",
+        "delta_wei": "0",
+        "window": [
+          20061351,
+          20061352
+        ],
+        "delta_eth": 0,
+        "delta_usd": 0
+      }
+    },
+    "eth_price_usd": 3670.4729040117813,
+    "attacker_window_aggregate": {
+      "0xf1293141fc6ab23b2a0143acc196e3429e0b67a6": {
+        "symbol": "uSUSDE",
+        "decimals": 18,
+        "price_usd": 1.0764720766326583,
+        "net_raw": "41476516316123199327052132",
+        "net_human": 41476516.3161232,
+        "net_usd": 44648311.65030548
+      },
+      "0xbac9d17f290260a1d5f1b69cac84dba6b4488d66": {
+        "symbol": "?",
+        "decimals": 18,
+        "price_usd": null,
+        "net_raw": "481297021573695722911",
+        "net_human": 481.29702157369576,
+        "net_usd": null
+      },
+      "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2": {
+        "symbol": "WETH",
+        "decimals": 18,
+        "price_usd": 3669.19,
+        "net_raw": "0",
+        "net_human": 0,
+        "net_usd": 0
+      },
+      "0xe42016bd5884555d9053a0f0563a34992c1d44e9": {
+        "symbol": "?",
+        "decimals": 18,
+        "price_usd": null,
+        "net_raw": "1393231116642762378019902",
+        "net_human": 1393231.1166427624,
+        "net_usd": null
+      },
+      "0x83f20f44975d03b1b09e64809b757c47f942beea": {
+        "symbol": "sDAI",
+        "decimals": 18,
+        "price_usd": 1.0881209080076915,
+        "net_raw": "1393231116642762378019902",
+        "net_human": 1393231.1166427624,
+        "net_usd": 1516003.9077058926
+      },
+      "0x64e4843ffdfb62d205b049ddbe8b949534e4e2d4": {
+        "symbol": "?",
+        "decimals": 18,
+        "price_usd": null,
+        "net_raw": "1761017372",
+        "net_human": 1.761017372e-9,
+        "net_usd": null
+      },
+      "0x2260fac5e5542a773aa44fbcfedf7c193bc2c599": {
+        "symbol": "WBTC",
+        "decimals": 8,
+        "price_usd": 69345.19097746706,
+        "net_raw": "0",
+        "net_human": 0,
+        "net_usd": 0
+      },
+      "0xeb6a0037ca1087e783494b533a53a60e43f2dabd": {
+        "symbol": "?",
+        "decimals": 18,
+        "price_usd": null,
+        "net_raw": "233680825790709832164322",
+        "net_human": 233680.82579070985,
+        "net_usd": null
+      },
+      "0xf939e0a03fb07f59a73314e73794be0e57ac1b4e": {
+        "symbol": "crvUSD",
+        "decimals": 18,
+        "price_usd": 0.9937018265287312,
+        "net_raw": "0",
+        "net_human": 0,
+        "net_usd": 0
+      },
+      "0xec12f63116bd2493104a26fbdbcd70f51ab7b2c1": {
+        "symbol": "?",
+        "decimals": 18,
+        "price_usd": null,
+        "net_raw": "498960112775926423531666",
+        "net_human": 498960.1127759264,
+        "net_usd": null
+      },
+      "0xb9d7dddca9a4ac480991865efef82e01273f79c3": {
+        "symbol": "?",
+        "decimals": 18,
+        "price_usd": null,
+        "net_raw": "0",
+        "net_human": 0,
+        "net_usd": null
+      },
+      "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48": {
+        "symbol": "USDC",
+        "decimals": 6,
+        "price_usd": 0.999831757387171,
+        "net_raw": "0",
+        "net_human": 0,
+        "net_usd": 0
+      },
+      "0x6b175474e89094c44da98b954eedeac495271d0f": {
+        "symbol": "DAI",
+        "decimals": 18,
+        "price_usd": 0.9994715080096356,
+        "net_raw": "0",
+        "net_human": 0,
+        "net_usd": 0
+      }
+    },
+    "attacker_per_address": {
+      "0xed1521ee1558af6087ad6bc6790ba1ee2a4174ec": {
+        "0xf1293141fc6ab23b2a0143acc196e3429e0b67a6": {
+          "symbol": "uSUSDE",
+          "net_raw": "41476516316123199327052132",
+          "net_human": 41476516.3161232,
+          "net_usd": 44648311.65030548
+        },
+        "0xbac9d17f290260a1d5f1b69cac84dba6b4488d66": {
+          "symbol": "?",
+          "net_raw": "481297021573695722911",
+          "net_human": 481.29702157369576,
+          "net_usd": null
+        },
+        "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2": {
+          "symbol": "WETH",
+          "net_raw": "0",
+          "net_human": 0,
+          "net_usd": 0
+        },
+        "0xe42016bd5884555d9053a0f0563a34992c1d44e9": {
+          "symbol": "?",
+          "net_raw": "1393231116642762378019902",
+          "net_human": 1393231.1166427624,
+          "net_usd": null
+        },
+        "0x83f20f44975d03b1b09e64809b757c47f942beea": {
+          "symbol": "sDAI",
+          "net_raw": "1393231116642762378019902",
+          "net_human": 1393231.1166427624,
+          "net_usd": 1516003.9077058926
+        },
+        "0x64e4843ffdfb62d205b049ddbe8b949534e4e2d4": {
+          "symbol": "?",
+          "net_raw": "1761017372",
+          "net_human": 1.761017372e-9,
+          "net_usd": null
+        },
+        "0x2260fac5e5542a773aa44fbcfedf7c193bc2c599": {
+          "symbol": "WBTC",
+          "net_raw": "0",
+          "net_human": 0,
+          "net_usd": 0
+        },
+        "0xeb6a0037ca1087e783494b533a53a60e43f2dabd": {
+          "symbol": "?",
+          "net_raw": "233680825790709832164322",
+          "net_human": 233680.82579070985,
+          "net_usd": null
+        },
+        "0xf939e0a03fb07f59a73314e73794be0e57ac1b4e": {
+          "symbol": "crvUSD",
+          "net_raw": "0",
+          "net_human": 0,
+          "net_usd": 0
+        },
+        "0xec12f63116bd2493104a26fbdbcd70f51ab7b2c1": {
+          "symbol": "?",
+          "net_raw": "498960112775926423531666",
+          "net_human": 498960.1127759264,
+          "net_usd": null
+        },
+        "0xb9d7dddca9a4ac480991865efef82e01273f79c3": {
+          "symbol": "?",
+          "net_raw": "0",
+          "net_human": 0,
+          "net_usd": null
+        },
+        "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48": {
+          "symbol": "USDC",
+          "net_raw": "0",
+          "net_human": 0,
+          "net_usd": 0
+        },
+        "0x6b175474e89094c44da98b954eedeac495271d0f": {
+          "symbol": "DAI",
+          "net_raw": "0",
+          "net_human": 0,
+          "net_usd": 0
+        }
+      }
+    },
+    "total_net_usd_erc20": 46164315.558011375,
+    "total_net_usd_with_native": 46164315.558011375
+  },
+  {
+    "id": "2021-10-27-cream-finance",
+    "chain": "ethereum",
+    "attacker_effective": [
+      "0x24354d31bc9d90f62fe5f2454709c32049cf866b",
+      "0x961d2b694d9097f35cfffa363ef98823928a330d"
+    ],
+    "txs": [],
+    "native": {
+      "0x24354d31bc9d90f62fe5f2454709c32049cf866b": {
+        "before_wei": "19441883646940164152",
+        "after_wei": "2770498702405383603295",
+        "delta_wei": "2751056818758443439143",
+        "window": [
+          13499797,
+          13499798
+        ],
+        "delta_eth": 2751.0568187584436,
+        "delta_usd": 11033043.169041751
+      },
+      "0x961d2b694d9097f35cfffa363ef98823928a330d": {
+        "before_wei": "0",
+        "after_wei": "0",
+        "delta_wei": "0",
+        "window": [
+          13499797,
+          13499798
+        ],
+        "delta_eth": 0,
+        "delta_usd": 0
+      }
+    },
+    "eth_price_usd": 4010.4744815924887,
+    "attacker_window_aggregate": {
+      "0x6b175474e89094c44da98b954eedeac495271d0f": {
+        "symbol": "DAI",
+        "decimals": 18,
+        "price_usd": 0.9988791002822677,
+        "net_raw": "0",
+        "net_human": 0,
+        "net_usd": 0
+      },
+      "0x16de59092dae5ccf4a1e6439d611fd0653f0bd01": {
+        "symbol": "?",
+        "decimals": 18,
+        "price_usd": null,
+        "net_raw": "0",
+        "net_human": 0,
+        "net_usd": null
+      },
+      "0xd6ad7a6750a7593e092a9b218d66c0a814a3436e": {
+        "symbol": "?",
+        "decimals": 18,
+        "price_usd": null,
+        "net_raw": "0",
+        "net_human": 0,
+        "net_usd": null
+      },
+      "0x83f798e925bcd4017eb265844fddabb448f1707d": {
+        "symbol": "?",
+        "decimals": 18,
+        "price_usd": null,
+        "net_raw": "0",
+        "net_human": 0,
+        "net_usd": null
+      },
+      "0x73a052500105205d34daf004eab301916da8190f": {
+        "symbol": "?",
+        "decimals": 18,
+        "price_usd": null,
+        "net_raw": "0",
+        "net_human": 0,
+        "net_usd": null
+      },
+      "0xdf5e0e81dff6faf3a7e52ba697820c5e32d806a8": {
+        "symbol": "?",
+        "decimals": 18,
+        "price_usd": null,
+        "net_raw": "166322912794066256722505",
+        "net_human": 166322.91279406627,
+        "net_usd": null
+      },
+      "0x4b5bfd52124784745c1071dcb244c6688d2533d3": {
+        "symbol": "?",
+        "decimals": 18,
+        "price_usd": null,
+        "net_raw": "0",
+        "net_human": 0,
+        "net_usd": null
+      },
+      "0x4baa77013ccd6705ab0522853cb0e9d453579dd4": {
+        "symbol": "?",
+        "decimals": 18,
+        "price_usd": null,
+        "net_raw": "6701346544258818449",
+        "net_human": 6.7013465442588185,
+        "net_usd": null
+      },
+      "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2": {
+        "symbol": "WETH",
+        "decimals": 18,
+        "price_usd": 4004.134372534255,
+        "net_raw": "-520447785044135506493672",
+        "net_human": -520447.7850441355,
+        "net_usd": -2083942865.2045424
+      },
+      "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48": {
+        "symbol": "USDC",
+        "decimals": 6,
+        "price_usd": 1.0004158190857473,
+        "net_raw": "1690395696011",
+        "net_human": 1690395.696011,
+        "net_usd": 1691098.5948038665
+      },
+      "0x5bc25f649fc4e26069ddf4cf4010f9f706c23831": {
+        "symbol": "DUSD",
+        "decimals": 18,
+        "price_usd": 1.4048707061702654,
+        "net_raw": "0",
+        "net_human": 0,
+        "net_usd": 0
+      },
+      "0xcbc1065255cbc3ab41a6868c22d1f1c573ab89fd": {
+        "symbol": "CRETH2",
+        "decimals": 18,
+        "price_usd": 3256.248225433961,
+        "net_raw": "12266463816009145730493",
+        "net_human": 12266.463816009145,
+        "net_usd": 39942651.03322967
+      },
+      "0x8798249c2e607446efb7ad49ec89dd1865ff4272": {
+        "symbol": "xSUSHI",
+        "decimals": 18,
+        "price_usd": 12.872598738114114,
+        "net_raw": "623760529988486822779519",
+        "net_human": 623760.5299884869,
+        "net_usd": 8029419.011215188
+      },
+      "0x0d438f3b5175bebc262bf23753c1e53d03432bde": {
+        "symbol": "wNXM",
+        "decimals": 18,
+        "price_usd": 55.91542831134456,
+        "net_raw": "135402944541301517084130",
+        "net_human": 135402.94454130152,
+        "net_usd": 7571113.638644109
+      },
+      "0xbc396689893d065f41bc2c6ecbee5e0085233447": {
+        "symbol": "perp",
+        "decimals": 18,
+        "price_usd": 17.309719634491156,
+        "net_raw": "447222593590652214743874",
+        "net_human": 447222.5935906522,
+        "net_usd": 7741297.709264171
+      },
+      "0x3155ba85d5f96b2d030a4966af206230e46849cb": {
+        "symbol": "?",
+        "decimals": 18,
+        "price_usd": null,
+        "net_raw": "418917294792442850457949",
+        "net_human": 418917.2947924428,
+        "net_usd": null
+      },
+      "0x1494ca1f11d487c2bbe4543e90080aeba4ba3c2b": {
+        "symbol": "DPI",
+        "decimals": 18,
+        "price_usd": 343.04341648662563,
+        "net_raw": "15567575750097560251951",
+        "net_human": 15567.575750097561,
+        "net_usd": 5340354.371727811
+      },
+      "0x1f9840a85d5af5bf1d1762f925bdaddc4201f984": {
+        "symbol": "UNI",
+        "decimals": 18,
+        "price_usd": 24.62949501563099,
+        "net_raw": "156629158238930877722356",
+        "net_human": 156629.15823893086,
+        "net_usd": 3857697.0721482253
+      },
+      "0x956f47f50a910163d8bf957cf5846d573e7f87ca": {
+        "symbol": "FEI",
+        "decimals": 18,
+        "price_usd": 0.9967245405667464,
+        "net_raw": "3817374503105485458327683",
+        "net_human": 3817374.5031054853,
+        "net_usd": 3804870.8477790267
+      },
+      "0xdac17f958d2ee523a2206206994597c13d831ec7": {
+        "symbol": "USDT",
+        "decimals": 6,
+        "price_usd": 1.001927081146306,
+        "net_raw": "3780808755759",
+        "net_human": 3780808.755759,
+        "net_usd": 3788094.6810300113
+      },
+      "0xdcd90c7f6324cfa40d7169ef80b12031770b4325": {
+        "symbol": "?",
+        "decimals": 18,
+        "price_usd": null,
+        "net_raw": "747480864886637652351",
+        "net_human": 747.4808648866376,
+        "net_usd": null
+      },
+      "0x6810e776880c02933d47db1b9fc05908e5386b96": {
+        "symbol": "gno",
+        "decimals": 18,
+        "price_usd": 413.75790729031394,
+        "net_raw": "6937023757101307138911",
+        "net_human": 6937.023757101307,
+        "net_usd": 2870248.432561428
+      },
+      "0x50d1c9771902476076ecfc8b2a83ad6b9355a4c9": {
+        "symbol": "FTX Token",
+        "decimals": 18,
+        "price_usd": 58.408038148901426,
+        "net_raw": "38922154159018669294167",
+        "net_human": 38922.15415901867,
+        "net_usd": 2273366.6649573846
+      },
+      "0x25f8087ead173b73d6e8b84329989a8eea16cf73": {
+        "symbol": "YGG",
+        "decimals": 18,
+        "price_usd": 5.620057650076579,
+        "net_raw": "341681583099484551498506",
+        "net_human": 341681.5830994845,
+        "net_usd": 1920270.1949885343
+      }
+    },
+    "attacker_per_address": {
+      "0x961d2b694d9097f35cfffa363ef98823928a330d": {
+        "0x6b175474e89094c44da98b954eedeac495271d0f": {
+          "symbol": "DAI",
+          "net_raw": "0",
+          "net_human": 0,
+          "net_usd": 0
+        },
+        "0x16de59092dae5ccf4a1e6439d611fd0653f0bd01": {
+          "symbol": "?",
+          "net_raw": "0",
+          "net_human": 0,
+          "net_usd": null
+        },
+        "0xd6ad7a6750a7593e092a9b218d66c0a814a3436e": {
+          "symbol": "?",
+          "net_raw": "0",
+          "net_human": 0,
+          "net_usd": null
+        },
+        "0x83f798e925bcd4017eb265844fddabb448f1707d": {
+          "symbol": "?",
+          "net_raw": "0",
+          "net_human": 0,
+          "net_usd": null
+        },
+        "0x73a052500105205d34daf004eab301916da8190f": {
+          "symbol": "?",
+          "net_raw": "0",
+          "net_human": 0,
+          "net_usd": null
+        },
+        "0xdf5e0e81dff6faf3a7e52ba697820c5e32d806a8": {
+          "symbol": "?",
+          "net_raw": "166322912794066256722505",
+          "net_human": 166322.91279406627,
+          "net_usd": null
+        },
+        "0x4b5bfd52124784745c1071dcb244c6688d2533d3": {
+          "symbol": "?",
+          "net_raw": "0",
+          "net_human": 0,
+          "net_usd": null
+        },
+        "0x4baa77013ccd6705ab0522853cb0e9d453579dd4": {
+          "symbol": "?",
+          "net_raw": "6701346544258818449",
+          "net_human": 6.7013465442588185,
+          "net_usd": null
+        },
+        "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2": {
+          "symbol": "WETH",
+          "net_raw": "-520447785044135506493672",
+          "net_human": -520447.7850441355,
+          "net_usd": -2083942865.2045424
+        },
+        "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48": {
+          "symbol": "USDC",
+          "net_raw": "1690395696011",
+          "net_human": 1690395.696011,
+          "net_usd": 1691098.5948038665
+        },
+        "0x5bc25f649fc4e26069ddf4cf4010f9f706c23831": {
+          "symbol": "DUSD",
+          "net_raw": "0",
+          "net_human": 0,
+          "net_usd": 0
+        },
+        "0xcbc1065255cbc3ab41a6868c22d1f1c573ab89fd": {
+          "symbol": "CRETH2",
+          "net_raw": "12266463816009145730493",
+          "net_human": 12266.463816009145,
+          "net_usd": 39942651.03322967
+        },
+        "0x8798249c2e607446efb7ad49ec89dd1865ff4272": {
+          "symbol": "xSUSHI",
+          "net_raw": "623760529988486822779519",
+          "net_human": 623760.5299884869,
+          "net_usd": 8029419.011215188
+        },
+        "0x0d438f3b5175bebc262bf23753c1e53d03432bde": {
+          "symbol": "wNXM",
+          "net_raw": "135402944541301517084130",
+          "net_human": 135402.94454130152,
+          "net_usd": 7571113.638644109
+        },
+        "0xbc396689893d065f41bc2c6ecbee5e0085233447": {
+          "symbol": "perp",
+          "net_raw": "447222593590652214743874",
+          "net_human": 447222.5935906522,
+          "net_usd": 7741297.709264171
+        },
+        "0x3155ba85d5f96b2d030a4966af206230e46849cb": {
+          "symbol": "?",
+          "net_raw": "418917294792442850457949",
+          "net_human": 418917.2947924428,
+          "net_usd": null
+        },
+        "0x1494ca1f11d487c2bbe4543e90080aeba4ba3c2b": {
+          "symbol": "DPI",
+          "net_raw": "15567575750097560251951",
+          "net_human": 15567.575750097561,
+          "net_usd": 5340354.371727811
+        },
+        "0x1f9840a85d5af5bf1d1762f925bdaddc4201f984": {
+          "symbol": "UNI",
+          "net_raw": "156629158238930877722356",
+          "net_human": 156629.15823893086,
+          "net_usd": 3857697.0721482253
+        },
+        "0x956f47f50a910163d8bf957cf5846d573e7f87ca": {
+          "symbol": "FEI",
+          "net_raw": "3817374503105485458327683",
+          "net_human": 3817374.5031054853,
+          "net_usd": 3804870.8477790267
+        },
+        "0xdac17f958d2ee523a2206206994597c13d831ec7": {
+          "symbol": "USDT",
+          "net_raw": "3780808755759",
+          "net_human": 3780808.755759,
+          "net_usd": 3788094.6810300113
+        },
+        "0xdcd90c7f6324cfa40d7169ef80b12031770b4325": {
+          "symbol": "?",
+          "net_raw": "747480864886637652351",
+          "net_human": 747.4808648866376,
+          "net_usd": null
+        },
+        "0x6810e776880c02933d47db1b9fc05908e5386b96": {
+          "symbol": "gno",
+          "net_raw": "6937023757101307138911",
+          "net_human": 6937.023757101307,
+          "net_usd": 2870248.432561428
+        },
+        "0x50d1c9771902476076ecfc8b2a83ad6b9355a4c9": {
+          "symbol": "FTX Token",
+          "net_raw": "38922154159018669294167",
+          "net_human": 38922.15415901867,
+          "net_usd": 2273366.6649573846
+        },
+        "0x25f8087ead173b73d6e8b84329989a8eea16cf73": {
+          "symbol": "YGG",
+          "net_raw": "341681583099484551498506",
+          "net_human": 341681.5830994845,
+          "net_usd": 1920270.1949885343
+        }
+      }
+    },
+    "total_net_usd_erc20": -1995112382.952193,
+    "total_net_usd_with_native": -1984079339.7831514
+  },
+  {
+    "id": "2022-04-02-inverse-finance",
+    "chain": "ethereum",
+    "attacker_effective": [
+      "0x117c0391b3483e32aa665b5ecb2cc539669ea7e9",
+      "0x8b4c1083cd6aef062298e1fa900df9832c8351b3",
+      "0xea0c959bbb7476ddd6cd4204bdee82b790aa1562"
+    ],
+    "txs": [],
+    "native": {
+      "0x117c0391b3483e32aa665b5ecb2cc539669ea7e9": {
+        "before_wei": "1490534400000000000",
+        "after_wei": "904640800000000000",
+        "delta_wei": "-585893600000000000",
+        "window": [
+          14506357,
+          14506359
+        ],
+        "delta_eth": -0.5858936,
+        "delta_usd": -2045.775880023014
+      },
+      "0x8b4c1083cd6aef062298e1fa900df9832c8351b3": {
+        "before_wei": "38302827691896285471",
+        "after_wei": "1624815923138055382445",
+        "delta_wei": "1586513095446159096974",
+        "window": [
+          14506357,
+          14506359
+        ],
+        "delta_eth": 1586.5130954461592,
+        "delta_usd": 5539658.094924407
+      },
+      "0xea0c959bbb7476ddd6cd4204bdee82b790aa1562": {
+        "before_wei": "0",
+        "after_wei": "0",
+        "delta_wei": "0",
+        "window": [
+          14506357,
+          14506359
+        ],
+        "delta_eth": 0,
+        "delta_usd": 0
+      }
+    },
+    "eth_price_usd": 3491.719110812977,
+    "attacker_window_aggregate": {
+      "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2": {
+        "symbol": "WETH",
+        "decimals": 18,
+        "price_usd": 3485.712805360035,
+        "net_raw": "-500000000000000000000",
+        "net_human": -500,
+        "net_usd": -1742856.4026800175
+      },
+      "0x41d5d79431a913c4ae7d69a668ecdfe5ff9dfb68": {
+        "symbol": "INV",
+        "decimals": 18,
+        "price_usd": 379.5946450931414,
+        "net_raw": "0",
+        "net_human": 0,
+        "net_usd": 0
+      },
+      "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48": {
+        "symbol": "USDC",
+        "decimals": 6,
+        "price_usd": 1.0054725704782723,
+        "net_raw": "0",
+        "net_human": 0,
+        "net_usd": 0
+      },
+      "0x865377367054516e17014ccded1e7d814edc9ce4": {
+        "symbol": "DOLA",
+        "decimals": 18,
+        "price_usd": 0.9989280687897124,
+        "net_raw": "3999669029654761043260989",
+        "net_human": 3999669.029654761,
+        "net_usd": 3995381.659591053
+      },
+      "0x1637e4e9941d55703a7a5e7807d6ada3f7dcd61b": {
+        "symbol": "?",
+        "decimals": 18,
+        "price_usd": null,
+        "net_raw": "1156068044897457678753",
+        "net_human": 1156.0680448974576,
+        "net_usd": null
+      },
+      "0x2260fac5e5542a773aa44fbcfedf7c193bc2c599": {
+        "symbol": "WBTC",
+        "decimals": 8,
+        "price_usd": 46642.31909959065,
+        "net_raw": "9403071805",
+        "net_human": 94.03071805,
+        "net_usd": 4385810.756451738
+      },
+      "0x0bc529c00c6401aef6d220be8c6ea1667f6ad93e": {
+        "symbol": "yfi",
+        "decimals": 18,
+        "price_usd": 23471.47916994278,
+        "net_raw": "39368440899328442000",
+        "net_human": 39.36844089932844,
+        "net_usd": 924035.5405217109
+      }
+    },
+    "attacker_per_address": {
+      "0x8b4c1083cd6aef062298e1fa900df9832c8351b3": {
+        "0x865377367054516e17014ccded1e7d814edc9ce4": {
+          "symbol": "DOLA",
+          "net_raw": "3999669029654761043260989",
+          "net_human": 3999669.029654761,
+          "net_usd": 3995381.659591053
+        },
+        "0x2260fac5e5542a773aa44fbcfedf7c193bc2c599": {
+          "symbol": "WBTC",
+          "net_raw": "9403071805",
+          "net_human": 94.03071805,
+          "net_usd": 4385810.756451738
+        },
+        "0x0bc529c00c6401aef6d220be8c6ea1667f6ad93e": {
+          "symbol": "yfi",
+          "net_raw": "39368440899328442000",
+          "net_human": 39.36844089932844,
+          "net_usd": 924035.5405217109
+        }
+      },
+      "0xea0c959bbb7476ddd6cd4204bdee82b790aa1562": {
+        "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2": {
+          "symbol": "WETH",
+          "net_raw": "-500000000000000000000",
+          "net_human": -500,
+          "net_usd": -1742856.4026800175
+        },
+        "0x41d5d79431a913c4ae7d69a668ecdfe5ff9dfb68": {
+          "symbol": "INV",
+          "net_raw": "0",
+          "net_human": 0,
+          "net_usd": 0
+        },
+        "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48": {
+          "symbol": "USDC",
+          "net_raw": "0",
+          "net_human": 0,
+          "net_usd": 0
+        },
+        "0x865377367054516e17014ccded1e7d814edc9ce4": {
+          "symbol": "DOLA",
+          "net_raw": "0",
+          "net_human": 0,
+          "net_usd": 0
+        },
+        "0x1637e4e9941d55703a7a5e7807d6ada3f7dcd61b": {
+          "symbol": "?",
+          "net_raw": "1156068044897457678753",
+          "net_human": 1156.0680448974576,
+          "net_usd": null
+        },
+        "0x2260fac5e5542a773aa44fbcfedf7c193bc2c599": {
+          "symbol": "WBTC",
+          "net_raw": "0",
+          "net_human": 0,
+          "net_usd": 0
+        },
+        "0x0bc529c00c6401aef6d220be8c6ea1667f6ad93e": {
+          "symbol": "yfi",
+          "net_raw": "0",
+          "net_human": 0,
+          "net_usd": 0
+        }
+      }
+    },
+    "total_net_usd_erc20": 7562371.553884485,
+    "total_net_usd_with_native": 13099983.872928869
+  },
+  {
+    "id": "2023-06-12-sturdy-finance",
+    "chain": "ethereum",
+    "attacker_effective": [
+      "0x1e8419e724d51e87f78e222d935fbbdeb631a08b",
+      "0x0b09c86260c12294e3b967f0d523b4b2bcdfbeab"
+    ],
+    "txs": [],
+    "native": {
+      "0x1e8419e724d51e87f78e222d935fbbdeb631a08b": {
+        "before_wei": "932308820528904726",
+        "after_wei": "443049911199349421466",
+        "delta_wei": "442117602378820516740",
+        "window": [
+          17460609,
+          17460610
+        ],
+        "delta_eth": 442.1176023788205,
+        "delta_usd": 773299.0559687474
+      },
+      "0x0b09c86260c12294e3b967f0d523b4b2bcdfbeab": {
+        "before_wei": "0",
+        "after_wei": "0",
+        "delta_wei": "0",
+        "window": [
+          17460609,
+          17460610
+        ],
+        "delta_eth": 0,
+        "delta_usd": 0
+      }
+    },
+    "eth_price_usd": 1749.08,
+    "attacker_window_aggregate": {
+      "0x7f39c581f595b53c5cb19bd0b3f8da6c935e2ca0": {
+        "symbol": "wstETH",
+        "decimals": 18,
+        "price_usd": 1972.35,
+        "net_raw": "0",
+        "net_human": 0,
+        "net_usd": 0
+      },
+      "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2": {
+        "symbol": "WETH",
+        "decimals": 18,
+        "price_usd": 1749.29,
+        "net_raw": "-66963505949388725209",
+        "net_human": -66.96350594938873,
+        "net_usd": -117138.59132220621
+      },
+      "0x06325440d014e39736583c165c2963ba99faf14e": {
+        "symbol": "steCRV",
+        "decimals": 18,
+        "price_usd": 1878.9202681518934,
+        "net_raw": "0",
+        "net_human": 0,
+        "net_usd": 0
+      },
+      "0xae7ab96520de3a18e5e111b5eaab095312d7fe84": {
+        "symbol": "stETH",
+        "decimals": 18,
+        "price_usd": 1748.01,
+        "net_raw": "1",
+        "net_human": 1e-18,
+        "net_usd": 1.7480100000000002e-15
+      }
+    },
+    "attacker_per_address": {
+      "0x0b09c86260c12294e3b967f0d523b4b2bcdfbeab": {
+        "0x7f39c581f595b53c5cb19bd0b3f8da6c935e2ca0": {
+          "symbol": "wstETH",
+          "net_raw": "0",
+          "net_human": 0,
+          "net_usd": 0
+        },
+        "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2": {
+          "symbol": "WETH",
+          "net_raw": "-66963505949388725209",
+          "net_human": -66.96350594938873,
+          "net_usd": -117138.59132220621
+        },
+        "0x06325440d014e39736583c165c2963ba99faf14e": {
+          "symbol": "steCRV",
+          "net_raw": "0",
+          "net_human": 0,
+          "net_usd": 0
+        },
+        "0xae7ab96520de3a18e5e111b5eaab095312d7fe84": {
+          "symbol": "stETH",
+          "net_raw": "1",
+          "net_human": 1e-18,
+          "net_usd": 1.7480100000000002e-15
+        }
+      }
+    },
+    "total_net_usd_erc20": -117138.59132220621,
+    "total_net_usd_with_native": 656160.4646465412
+  },
+  {
+    "id": "2024-03-05-woofi",
+    "chain": "arbitrum",
+    "attacker_effective": [
+      "0x9961190b258897bca7a12b8f37f415e689d281c4",
+      "0x27a116a48c6dd23fc005ea6ea02847723d5b3856"
+    ],
+    "txs": [],
+    "native": {
+      "0x9961190b258897bca7a12b8f37f415e689d281c4": {
+        "error": "arbitrum eth_getBalance failed via all endpoints: http 403"
+      },
+      "0x27a116a48c6dd23fc005ea6ea02847723d5b3856": {
+        "error": "arbitrum eth_getBalance failed via all endpoints: http 403"
+      }
+    },
+    "eth_price_usd": 3812.87,
+    "attacker_window_aggregate": {
+      "0xcafcd85d8ca7ad1e1c6f82f651fa15e33aefd07b": {
+        "symbol": "WOO",
+        "decimals": 18,
+        "price_usd": 0.570417,
+        "net_raw": "887068792564191410725170",
+        "net_human": 887068.7925641915,
+        "net_usd": 505999.1194480884
+      }
+    },
+    "attacker_per_address": {
+      "0x9961190b258897bca7a12b8f37f415e689d281c4": {
+        "0xcafcd85d8ca7ad1e1c6f82f651fa15e33aefd07b": {
+          "symbol": "WOO",
+          "net_raw": "887068792564191410725170",
+          "net_human": 887068.7925641915,
+          "net_usd": 505999.1194480884
+        }
+      }
+    },
+    "total_net_usd_erc20": 505999.1194480884,
+    "total_net_usd_with_native": 505999.1194480884
+  },
+  {
+    "id": "2026-03-22-resolv",
+    "chain": "ethereum",
+    "attacker_effective": [
+      "0x15cad41e6bdcad7121ce65080489c92cf6de398"
+    ],
+    "txs": [],
+    "native": {
+      "0x15cad41e6bdcad7121ce65080489c92cf6de398": {
+        "error": "ethereum eth_getBalance failed via all endpoints: http 403"
+      }
+    },
+    "eth_price_usd": 2091.2293200237464,
+    "attacker_window_aggregate": {},
+    "attacker_per_address": {},
+    "total_net_usd_erc20": 0,
+    "total_net_usd_with_native": 0
+  }
+]

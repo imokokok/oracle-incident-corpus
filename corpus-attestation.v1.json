@@ -1,0 +1,48 @@
+{
+  "schema": "priorseal.artifact-attestation.v1",
+  "domain": "priorseal/artifact-attestation/v1",
+  "issuer": "priorseal-local",
+  "keyId": "default",
+  "issuedAt": 1791742871,
+  "subject": "oracle-incident-corpus",
+  "artifact": "incidents.v0.yaml",
+  "version": "1.0.0",
+  "sha256": "ea8411cd82366de69f8c10e380b0b60dd91091c979871990ab1269fd8ddfd78e",
+  "bytes": 42415,
+  "entries": 15,
+  "tx_verified_entries": 8,
+  "primary_disclosure_entries": 3,
+  "onchain_verified_pass": "2026-10-11",
+  "amount_recompute_pass": "2026-10-12",
+  "amount_recompute_verdicts": {
+    "confirmed": [
+      "2022-04-02-inverse-finance",
+      "2023-06-12-sturdy-finance"
+    ],
+    "token-confirmed": [
+      "2023-02-01-bonqdao"
+    ],
+    "refined": [
+      "2021-10-27-cream-finance"
+    ],
+    "partial": [
+      "2020-10-26-harvest-finance",
+      "2024-03-05-woofi",
+      "2026-03-22-resolv"
+    ],
+    "flagged": [
+      "2024-06-10-uwu-lend"
+    ],
+    "none-applicable": [
+      "2019-06-24-synthetix-skrw",
+      "2026-09-04-vesu-pragma",
+      "2021-10-11-mango-markets",
+      "2023-04-04-sentiment",
+      "2025-03-26-hyperliquid-jelly",
+      "2026-02-15-moonwell-cbeth",
+      "2026-03-10-aave-capo-wsteth"
+    ]
+  },
+  "note": "self-issued attestation: trust root is the attached issuer public key itself; v1.0.0 = on-chain verified (2026-10-11) + amount recompute pass (2026-10-12, tx-receipt log-level token flows + native balance diff + DefiLlama at-attack-block pricing); uwu entry is flagged (recompute conflicts >2x with secondary range) and MUST NOT be externally cited before manual arbitration; upgrade path = pin issuer key in a published well-known registry before any external reliance",
+  "signature": "gUlxh2syAhdMpg9PgAyhoMBLP9TqNdh7BMsdcp7s7MQvVSscoV0tmugFBpgDfQa8CNq_82vxVkIWf9ZqdjfpBA"
+}

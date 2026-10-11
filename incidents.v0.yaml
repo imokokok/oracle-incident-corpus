@@ -1,0 +1,525 @@
+# Oracle 事故语料库 v1.0.0
+# 生成日期：2026-10-11（v0.2 同日链上核验 pass；v0.3 同日第二轮：官方披露升级 + UWU 日期链上纠错）。
+# v1.0.0：2026-10-12 金额链上复算 pass —— 8 条目 / 12 tx 的 tx-receipt 日志级复算
+#   （ERC-20 Transfer 聚合 + 原生币余额差分 + DefiLlama 攻击块时点价）。
+# 维护者：insight（oracleinsight.xyz）。
+# 结构化、版本化、带出处的事故记录。每条记录：根因分类 + 损失量纲 + 攻击成本（可得时）+ 复盘链接。
+#
+# 置信分级（confidence 字段）：
+#   tx-hash-chain-verified  —— 攻击 tx 已在链上实测（eth_getTransactionReceipt 存在 +
+#       status=success + 区块时间戳与记录日期吻合，publicnode/drpc/llamarpc/ankr，2026-10-11）；
+#       注意：这只钉住"攻击发生在该日"，损失金额仍是二手口径
+#   primary-disclosure-verified —— 协议官方复盘（postmortem / 官方披露）为权威口径，
+#       数字以官方自报为准；无 tx 可验的场景（配置错误/上游故障类）的核验天花板
+#   multi-source-verified  —— 多个独立二手源交叉吻合（本 v0 经 2026-10-11 检索核实）
+#   single-secondary-source —— 仅单一二手源，未交叉核验
+#   playbook-secondary-pending-primary —— 来自 10-10 playbook（单一 newsletter 聚合源转述），
+#       动手使用前须以协议治理论坛原始帖与链上记录双向核验（playbook 第 72 行纪律）
+#
+# 金额复算分级（amount_recompute 字段，2026-10-12 v1 新增）：
+#   confirmed       —— 借出/窃取资产在 tx 日志级逐项复现，数量与记录口径吻合
+#   token-confirmed —— 资产数量复现，但 USD 计价受操纵时点价影响，名义口径分层保留
+#   refined         —— 复算数量与记录同量级但低于口径（部分 token 无法计价），两级数字并列
+#   partial         —— 仅记录 tx 范围内可复算（利润经多 tx/多地址流出，超出记录范围）
+#   flagged         —— 复算值与记录口径冲突超 2 倍，须人工仲裁后才可使用
+#   none-applicable —— 无攻击 tx（feed 故障/配置错误类）或非 EVM，复算不适用
+#
+# 已知局限（缺口显式列出，不掩盖）：
+#   1. 核验状态（2026-10-11 两轮后）：tx 链上核验 8/15 条目（12 个 tx）；官方披露核验 3/15
+#      （vesu/moonwell/aave-capo）；Mango 达到"账户-程序归属核验"（攻击账户存活且属
+#      Mango v3 程序，2021 签名超出公共 RPC 历史窗口）；sentiment tx 为多源一致引用
+#      但 5 端点 RPC 未复现（诚实标注于条目内）；synthetix 为 feed 故障类（无攻击 tx，
+#      多源即该类天花板）；hyperliquid 为非 EVM 链（多源+日精度为现可达上限）。
+#      v1 起金额复算见各条 amount_recompute 字段与方法注记（meta.amount_recompute_method）。
+#   2. 名义损失（nominal）与实际变现（realized）经常相差 1-2 个数量级（见 bonqdao），
+#      loss_usd_estimate 是名义口径，除非字段另注；realized 仍为二手/官方口径（未复算）。
+#   3. 分类法是 v0 提案，10 类 × 15 条，可能过拟合；积累到 30+ 条后再收敛。
+#   4. 检索发现已存在通用型结构化 hack 数据库（iTokenly Hack Registry，CC BY 4.0）——
+#      本语料库的差异化 = oracle 专一 curation + 攻击成本字段 + 金额链上复算 + ML 就绪结构 + 签名出处（PriorSeal）。
+#   5. 日期精度 date_precision=month 的条目未核实到具体日。
+
+meta:
+  version: 1.0.0
+  generated: 2026-10-11
+  onchain_verified_pass: 2026-10-11   # round 1: 8 tx / 6 entries; round 2: +4 tx / +2 entries (uwu, resolv) + mango account check
+  amount_recompute_pass: 2026-10-12   # 8 条目 / 12 tx：receipt 日志级代币流聚合 + 原生币余额差分 + DefiLlama 攻击块时点价
+  amount_recompute_method: >
+    scripts/recompute-v1.mjs（receipt ERC-20 Transfer 日志按 attacker 地址聚合 + eth_getBalance
+    窗口差分）→ scripts/analyze-v1.mjs（DefiLlama coins/prices/historical 按攻击块时间戳计价，
+    无 key 原始单位→人读单位→USD）。原始输出存 data/recompute-raw.json 与 data/recompute-priced.json。
+    边界：只复算攻击 tx 内/紧后窗口的资产流出（token 级）；realized（后续变现）与追回仍为二手/官方口径。
+  amount_recompute_verdicts:
+    confirmed: [2022-04-02-inverse-finance, 2023-06-12-sturdy-finance]
+    token-confirmed: [2023-02-01-bonqdao]
+    refined: [2021-10-27-cream-finance]
+    partial: [2020-10-26-harvest-finance, 2024-03-05-woofi, 2026-03-22-resolv]
+    flagged: [2024-06-10-uwu-lend]
+    none-applicable: [2019-06-24-synthetix-skrw, 2026-09-04-vesu-pragma, 2021-10-11-mango-markets, 2023-04-04-sentiment, 2025-03-26-hyperliquid-jelly, 2026-02-15-moonwell-cbeth, 2026-03-10-aave-capo-wsteth]
+  primary_disclosure_upgraded: [2026-09-04-vesu-pragma, 2026-02-15-moonwell-cbeth, 2026-03-10-aave-capo-wsteth]
+  date_corrections: [{id: 2024-06-10-uwu-lend, was: "2023-06-10", corrected_by: "on-chain block timestamp, tx 0xca1bbf…6ac3"}]
+  entry_count: 15
+  source_of_three_playbook_cases: ../PriorSeal/docs/research/insight-procurement-validation-playbook-2026-10-10.md  # 即 ~/Documents/PriorSeal/...
+  root_cause_taxonomy_note: >
+    v0 分类法。上层四类（操纵/停更/wrapper 配错/上游故障）来自地基扩展报告第二节；
+    本 v0 细分为 10 类以保留攻击机制差异。是否收敛由语料量决定。
+
+entries:
+  # ============ 上游 feed 故障类 ============
+
+  - id: 2019-06-24-synthetix-skrw
+    date: 2019-06-24
+    date_precision: day
+    chain: ethereum
+    protocol: Synthetix
+    asset_or_feed: sKRW 汇率 feed
+    oracle_type: 官方私有 oracle（多商业 API 聚合）
+    root_cause_class: upstream_feed_error
+    loss_usd_estimate: [0, 0]           # 未实现损失：全部追回
+    exposure_notional: "37M sETH 被错误铸造给套利机器人（名义敞口约 $1B 量级，见 cointelegraph 报道口径）"
+    recovered: full                      # 机器人所有者以 bug bounty 换取全额回滚
+    description: >
+      一家商业 FX API 间歇性把 KRW 价格报高 1000 倍。正常情况下 outlier 剔除机制可吸收，
+      但当时另一路 API 因无关故障停服且未被异常上报捕获，oracle 对仅剩的两路取平均，
+      把错误价写进汇率合约。自动套利机器人发现并转换为 sETH。官方停机回滚，机器人以
+      bug bounty 交换归还。
+    attack_cost: "零（无攻击者，纯 feed 故障 + 冗余降级）"
+    mechanism_note: "冗余设计在'同时降级到 2 路'时失效——平均不是中位数，outlier 剔除没有兜底"
+    outcome: 全额追回，平台停机数小时，事后增加 feed 冗余与异常处理
+    dispute_status: resolved
+    confidence: multi-source-verified
+    amount_recompute: none-applicable   # 无攻击 tx（feed 故障类），损失全额追回，复算不适用
+    sources:
+      - {url: "https://www.theblock.co/linked/28748/security", tier: secondary, accessed: 2026-10-11}
+      - {url: "https://cointelegraph.com.cach3.com/news/synthetix-reverses-oracle-error-caused-misplaced-seth-in-exchange-for-a-bug-bounty/", tier: secondary, accessed: 2026-10-11}
+      - {url: "https://quadrigainitiative.com/casestudy/synthetixoracletheftincident.php", tier: secondary, accessed: 2026-10-11}
+
+  - id: 2026-09-04-vesu-pragma
+    date: 2026-09-04
+    date_precision: day
+    chain: starknet
+    protocol: Vesu
+    asset_or_feed: Pragma 上游喂价（BTC/WBTC/ETH/STRK/USDC/wstETH）
+    oracle_type: Pragma（非 EVM 生态 oracle）
+    root_cause_class: upstream_feed_error
+    loss_usd_estimate: [737914, 737914]      # 官方复盘口径：借款人权益损失 $737,914；池吸收坏账 $657,387
+    exposure_notional: "~$3M 抵押品被清算人取走（47 仓位/42 钱包/7 池）"
+    description: >
+      Pragma 发布管道故障，2026-09-04 04:07:52–04:40 UTC 间约 109 秒内把多资产
+      （BTC、WBTC、ETH、STRK、USDC 及滞后的 wstETH）价格报到约为真实市值一半。
+      04:08:16–04:10:04 间 47 个仓位（42 个借款钱包、7 个池）被无许可清算机器人清算。
+      官方复盘定性：Vesu 合约零漏洞——清算算术/记账/坏账处理全部按规格运行；
+      失效点是外部输入，且 Vesu 链上价格校验无法捕获（校验所依据的元数据本身错误）。
+    recovered: 95%（按 09-11 价格口径；93% 按事发当日价；退款由池策展人处理）
+    attack_cost: "零（无攻击者，上游 feed 故障 + 清算激励照常运转）"
+    mechanism_note: "喂价校验的信任根也依赖喂价——元数据错误时验证形同虚设；109 秒足够完成一次完整清算周期"
+    outcome: 95% 资产已回收；Pragma 已部署根因修复；受影响池曾暂停
+    dispute_status: resolved-partial-recovery
+    confidence: primary-disclosure-verified   # Vesu 官方复盘（2026-09-22 发布），数字为协议自报权威口径
+    amount_recompute: none-applicable   # Starknet 非 EVM，官方复盘数字即权威口径
+    notes: "playbook 判定：非 EVM 不做还原样本，仅作争议举证方向的话题案例"
+    sources:
+      - {url: "https://docs.vesu.xyz/security/disclosures-report/oracle-price-feed-incident-disclosure", tier: primary, accessed: 2026-10-11}
+      - {url: "~/Documents/PriorSeal/docs/research/insight-procurement-validation-playbook-2026-10-10.md", tier: internal-secondary, accessed: 2026-10-11}
+
+  # ============ 直接操纵类 ============
+
+  - id: 2021-10-11-mango-markets
+    date: 2021-10-11
+    date_precision: day
+    chain: solana
+    protocol: Mango Markets
+    asset_or_feed: MNGO 永续 mark price（多交易所输入聚合）
+    oracle_type: 多交易所现货聚合 mark price
+    root_cause_class: mark_price_manipulation
+    loss_usd_estimate: [110000000, 117000000]
+    recovered: "67000000（与 Eisenberg 达成和解退回，CFTC/司法口径）"
+    description: >
+      攻击者（Avraham Eisenberg）用两个账户对倒 MNGO/USDC 永续，同时约 10 分钟内在
+      Mango oracle 依赖的三个交易所买入约 $4M MNGO（市场极薄），MNGO 价格约 30 分钟内
+      上行 13 倍（CFTC 口径），以膨胀的持仓价值借出约 $110M 加密资产。
+      2021-12-27 被捕（SDNY 商品欺诈/操纵指控；CFTC 2022-01 平行起诉）。
+    attack_cost: "约 $4M 自有资金跨三交易所买入（非闪电贷，需承担持仓风险）"
+    mechanism_note: "多交易所聚合不等于安全——只要输入市场都可被资本移动，聚合的是可操纵源"
+    outcome: $67M 和解退回；刑事与 CFTC 民事并行
+    dispute_status: resolved-legal
+    confidence: multi-source-verified
+    amount_recompute: none-applicable   # Solana 2021 签名超出公共 RPC 历史窗口（账户-程序归属已核验，见 onchain_evidence）；$110-117M 维持二手+司法口径
+    attacker_addresses:
+      - "CQvKSNnYtPTZfQRQ5jkHq8q2swJyRsdQLcFcj3EmKFfX"   # 账户 A（空头腿）
+      - "4ND8FVPjUGGjx9VuGFuJefDWpg3THb58c277hbVRnjNa"   # 账户 B（多头腿）
+    onchain_evidence:
+      - {accounts: ["CQvKSNnYtPTZfQRQ5jkHq8q2swJyRsdQLcFcj3EmKFfX", "4ND8FVPjUGGjx9VuGFuJefDWpg3THb58c277hbVRnjNa"], owner_program: "mv3ekLzLbnVPNxjSKvqBpU3ZeZXPQdEC3bp5MDEBG68", note: "两账户均实测存活且同属 Mango v3 程序（getAccountInfo，2026-10-11）；2021 年交易签名超出公共 RPC 历史窗口，tx 级核验待归档数据源", verified: 2026-10-11, method: "solana getAccountInfo (publicnode)"}
+    sources:
+      - {url: "https://www.jpost.com/business-and-innovation/banking-and-finance/article-725977", tier: secondary, accessed: 2026-10-11}
+      - {url: "https://www.halborn.com/blog/post/top-oracle-manipuation-hacks-defi", tier: secondary, accessed: 2026-10-11}
+      - {url: "https://www.benzinga.com/markets/cryptocurrency/23/01/30357246/digital-artist-avraham-eisenberg-charged-with-crypto-market-manipulation-by-cftc", tier: secondary, accessed: 2026-10-11}
+
+  - id: 2020-10-26-harvest-finance
+    date: 2020-10-26
+    date_precision: day
+    chain: ethereum
+    protocol: Harvest Finance
+    asset_or_feed: Curve 稳定币池现货比例（金库份额计价）
+    oracle_type: AMM 现货价直读
+    root_cause_class: amm_spot_manipulation
+    loss_usd_estimate: [24000000, 34000000]   # 各源口径不一（$25M/$34M），记录区间
+    recovered: partial                         # 攻击者退回部分资金
+    description: >
+      金库份额价格直读 Curve 池现货比例。攻击者用 Uniswap 借入 $50M，
+      7 分钟内循环 32 次：推高 Curve 中 USDT 名义价 → 高价入金库 → 反向还原价格 →
+      低价出金库，每轮获利约 $500K。三家审计（PeckShield/Haechi/CertiK）均未覆盖该经济设计缺陷。
+    attack_cost: "闪电贷 $50M（零自有资本，单 tx 内自还）"
+    mechanism_note: "教科书级 AMM 现货直读操纵；审计查代码不查价格输入的经济假设"
+    outcome: 部分资金退回；协议 TVL 崩塌
+    dispute_status: resolved
+    confidence: tx-hash-chain-verified
+    amount_recompute: partial   # 2026-10-12：记录 tx 内获利合约 0xc602…净得 +691,781.90 USDC + 20 WETH（≈$0.70M，llama 攻击块时点价）——与"每轮获利约 $500K"同量级；总利润经 32 轮/多 tx/多地址流出，超出记录 tx 范围，$24-34M 名义口径维持二手
+    attacker_address: "0xf224ab004461540778a914ea397c589b677e27bb"
+    onchain_evidence:
+      - {tx: "0x35f8d2f572fceaac9288e5d462117850ef2694786992a8c3f6d02612277b0877", block: 11129474, block_date: 2020-10-26, status: success, verified: 2026-10-11, method: "eth_getTransactionReceipt + block timestamp (llamarpc/drpc full-history)"}
+    sources:
+      - {url: "https://smartcontractshacking.com/attacks/oracle-manipulation-attacks", tier: secondary, accessed: 2026-10-11}
+      - {url: "https://www.smartcontractaudit.com/guides/defi-oracle-manipulation-incidents-2020-2026", tier: secondary, accessed: 2026-10-11}
+
+  - id: 2023-02-01-bonqdao
+    date: 2023-02-01
+    date_precision: day
+    chain: polygon
+    protocol: BonqDAO
+    asset_or_feed: WALBT（TellorFlex 报价）
+    oracle_type: 去中心化 oracle 网络（Tellor）+ 无延迟消费
+    root_cause_class: oracle_submit_underpriced
+    loss_usd_estimate: [88000000, 120000000]  # Numen 链上口径 $88M；Immunefi 口径 $120M
+    realized_usd_estimate: [1200000, 1600000] # The Block 口径售出 ~$1.2M；AllianceBlock 称实际损失 ~$1.6M
+    recovered: none
+    description: >
+      BonqDAO 用 Tellor 报价作为 WALBT 抵押价，且用 getCurrentValue 立即生效（无延迟无平均）。
+      攻击者质押 10 TRB 获得报价权，把 WALBT 报到天价（约 10 倍），用 0.1 WALBT 借出 1 亿 BEUR；
+      数分钟后反向报近零价清算他人 trove，获取 ~113.8M WALBT。
+      名义损失 $88-120M，但因 WALBT/BEUR 几乎无流动性，攻击者实际变现仅 ~$1.2-1.6M。
+      攻击者为绕过报价时间锁，每次报价部署新 reporter 合约（Immunefi 分析）。
+    attack_cost: "10 TRB 的质押（成本与 $120M 名义收益完全不成比例——正是操纵成本论点的实证）"
+    mechanism_note: "去中心化 oracle ≠ 安全：安全性=提交坏价的成本 vs 收益，整合侧无延迟消费放大一切"
+    outcome: 用户获补偿；AllianceBlock 暂停桥并撤流动性
+    dispute_status: resolved
+    confidence: tx-hash-chain-verified
+    amount_recompute: token-confirmed   # 2026-10-12：攻击合约 0xed59…净得 +113,813,985 WALBT（与"~113.8M"逐位吻合）+ 98,658,539 BEUR（与"1 亿"吻合）- 20 TRB（撤回质押）；llama 攻击时点价 WALBT≈$0.105 严重低于名义口径的 ~$1 —— 印证"名义与变现差 1-2 个数量级"，$88-120M 名义 / $1.2-1.6M realized 分层维持
+    attacker_address: "0xcAcf2D28B2A5309e099f0C6e8C60Ec3dDf656642"
+    onchain_evidence:
+      - {tx: "0x31957ecc43774d19f54d9968e95c69c882468b46860f921668f2c55fadd51b19", block: 38792978, block_date: 2023-02-01, status: success, verified: 2026-10-11, method: "eth_getTransactionReceipt + block timestamp (drpc polygon full-history)"}
+      - {tx: "0xa02d0c3d16d6ee0e0b6a42c3cc91997c2b40c87d777136dedebe8ee0f47f32b1", block: 38793029, block_date: 2023-02-01, status: success, verified: 2026-10-11, method: "同上"}
+    sources:
+      - {url: "https://www.numencyber.com/?p=6156", tier: secondary, accessed: 2026-10-11}
+      - {url: "https://itokenly.com/hacks/bonqdao", tier: secondary, accessed: 2026-10-11}
+      - {url: "https://anquanke.com/post/id/286163", tier: secondary, accessed: 2026-10-11}
+
+  - id: 2024-06-10-uwu-lend
+    date: 2024-06-10
+    date_precision: day                    # 2026-10-11 链上核验时纠错：多个二手源转述为"2023-06"，攻击 tx 实测 block 20061352 = 2024-06-10T12:12 UTC（UwU Lend 2024 年才上线）
+    chain: ethereum
+    protocol: UwU Lend
+    asset_or_feed: sUSDe 中位数喂价（5 路 Curve 池源）
+    oracle_type: 多源取中位数
+    root_cause_class: median_source_capture
+    loss_usd_estimate: [19300000, 20300000]
+    recovered: partial                       # 事后返还 ~$9.7M；6-13 二次攻击再损失 $3.7M
+    description: >
+      sUSDe 定价取多源中位数，但中位数防御在"多数源同时被操纵"时失效：
+      FRAX/USDe、USDe/USDC、USDe/DAI、USDe/crvUSD、GHO/USDe 五路源（均为薄 Curve 池）
+      在攻击中被同时操纵（PeckShield 归因）。攻击者 6 分钟 3 笔交易抽走 ~$20M；
+      同一钱包 6-13 再抽 $3.7M（第二次是治理操作失误而非同一漏洞，CertiK 口径）。
+    attack_cost: "闪电贷操纵五路薄池（零资本门槛）"
+    mechanism_note: "中位数是常见防御但不是免费的——源的独立性/深度决定中位数是否可被捕获"
+    outcome: 协议暂停；两轮返还谈判；$5M 悬赏
+    dispute_status: resolved-partial-recovery
+    confidence: tx-hash-chain-verified
+    amount_recompute: flagged   # 2026-10-12：受益 EOA 0xed1521…在记录 tx 内净得 +41,476,516 uSUSDE + 1,393,231 sDAI + 若干未计价 LP 凭证，llama 时点价合计 ≈$46M —— 超出 $19.3-20.3M 二手区间 2 倍以上。冲突未仲裁：sUSDe 计价池本身是攻击中被操纵的池（时点价可能失真）、且另 2 笔攻击 tx 未收录。仲裁前本条金额不得外引；复算明细见 data/recompute-priced.json
+    onchain_evidence:
+      - {tx: "0xca1bbf3b320662c89232006f1ec6624b56242850f07e0f1dadbe4f69ba0d6ac3", block: 20061352, block_date: "2024-06-10T12:12Z", status: success, verified: 2026-10-11, method: "eth_getTransactionReceipt + block timestamp (llamarpc full-history)"}
+    sources:
+      - {url: "https://www.olympix.security/biweekly-exploits/45m-exploited-uwu-lend-gala-games-and-tch-breached-via-price-oracles-wallets-and-signature-reuse", tier: secondary, accessed: 2026-10-11}
+      - {url: "https://cryptonews.com/news/uwu-lend-reacts-to-23-million-hack-pauses-protocol-and-negotiates-with-hacker.htm", tier: secondary, accessed: 2026-10-11}
+      - {url: "https://quark.news/hacker-drains-19-5-million-from-uwu-lend-in-price-oracle-exploit-57128.html", tier: secondary, accessed: 2026-10-11}
+      - {url: "https://chainaffairs.com/uwu-lend-offers-hefty-5-million-bounty-after-hacker-exploits-protocol-twice/", tier: secondary, accessed: 2026-10-11}
+
+  - id: 2021-10-27-cream-finance
+    date: 2021-10-27
+    date_precision: day
+    chain: ethereum
+    protocol: Cream Finance
+    asset_or_feed: yUSD 金库 pricePerShare（份额价作 oracle）
+    oracle_type: 金库份额价直读
+    root_cause_class: share_price_inflation
+    loss_usd_estimate: [130000000, 130000000]
+    recovered: none
+    description: >
+      yUSD 作为抵押品按 pricePerShare 计价。攻击者用两个合约循环：存入→推高
+      pricePerShare→借出→再存入，递归放大到 $1.5B crYUSD 名义头寸，pricePerShare 被翻倍，
+      以膨胀抵押借走约 $130M。
+    attack_cost: "闪电贷启动 + 循环自我放大（递归借款不需要大额本金）"
+    mechanism_note: "份额/LP/rebasing 代币作抵押=引入隐藏 oracle 层，其底层假设全部成为攻击面"
+    outcome: 资金未追回；Cream 后续多次出事
+    dispute_status: unresolved
+    confidence: tx-hash-chain-verified
+    amount_recompute: refined   # 2026-10-12：借款合约 0x961d…逐 token 复算——2,751.06 ETH($11.0M) + USDC 1.69M + USDT 3.78M + FEI 3.82M + CRETH2 12,266($39.9M) + xSUSHI 623,761($8.0M) + wNXM 135,403($7.6M) + PERP 447,223($7.7M) + DPI 15,568($5.3M) + UNI 156,629($3.9M) + GNO 6,937($2.9M) + FTT 38,922($2.3M) + YGG 341,682($1.9M)，llama 时点价已计价部分 ≈$110M；另有 4 个低流动性 token（约 58.6 万单位）无价未计。$130M 口径与复算同量级但未被完整复现——两级数字并列，WETH 一笔 -52 万的净流出为 crYUSD 份额记账伪影（非真实流出），已剔除
+    attacker_address: "0x24354d31bc9d90f62fe5f2454709c32049cf866b"
+    onchain_evidence:
+      - {tx: "0x0fe2542079644e107cbf13690eb9c2c65963ccb79089ff96bfaf8dced2331c92", block: 13499798, block_date: 2021-10-27, status: success, verified: 2026-10-11, method: "eth_getTransactionReceipt + block timestamp (llamarpc full-history)"}
+    sources:
+      - {url: "https://www.halborn.com/blog/post/top-oracle-manipuation-hacks-defi", tier: secondary, accessed: 2026-10-11}
+      - {url: "https://smartcontractshacking.com/attacks/oracle-manipulation-attacks", tier: secondary, accessed: 2026-10-11}
+
+  - id: 2022-04-02-inverse-finance
+    date: 2022-04-02
+    date_precision: day
+    chain: ethereum
+    protocol: Inverse Finance (Anchor/Frontier)
+    asset_or_feed: INV（Keep3rV2 TWAP，30 分钟窗口，SushiSwap 薄池）
+    oracle_type: TWAP（窗口实现有缺陷）
+    root_cause_class: twap_window_bypass
+    loss_usd_estimate: [14500000, 15600000]  # CertiK 复算 $14.5M；官方口径 $15.6M
+    recovered: partial                        # 分期偿付（DOLA IOU 机制）
+    description: >
+      Keep3rV2 oracle 的 _update() 要求 timeElapsed > periodSize 才刷新累计价。
+      攻击者两笔交易间隔仅 15 秒，窗口检查被绕过，被操纵的 SushiSwap 现货价
+      （INV 池仅 432 INV / 46 ETH）未经平滑直通 oracle，INV 瞬时计价 $20,926。
+      攻击者以膨胀的 xINV 作抵押借走 1588 ETH + 94 WBTC + ~4M DOLA + 39 YFI。
+      非闪电贷（约 901 ETH 自有资金，来自 Tornado Cash）。
+    attack_cost: "约 901 ETH 自有资金 + 私有交易束（blockchainbreaches 称经 private mempool bundle 隐藏）"
+    mechanism_note: "TWAP 不是免死金牌——窗口实现 bug + 薄池照样直通；另注：同年 6 月 Inverse 再遭 oracle 事故"
+    outcome: 借贷暂停；迁移 Chainlink oracle；用户分期获偿
+    dispute_status: resolved-partial-recovery
+    confidence: tx-hash-chain-verified
+    amount_recompute: confirmed   # 2026-10-12：两 tx 日志级逐项复现——WBTC 94.0307（记录 94）、DOLA 3,999,669（记录 ~4M）、YFI 39.368（记录 39）、ETH +1,586.51（记录 1588，差 1.49 ETH≈gas/口径），llama 时点价合计 ≈$14.84M，落于 $14.5-15.6M 区间内
+    attacker_addresses: ["0x117c0391b3483e32aa665b5ecb2cc539669ea7e9", "0x8b4c1083cd6aef062298e1fa900df9832c8351b3"]
+    onchain_evidence:
+      - {tx: "0x20a6dcff06a791a7f8be9f423053ce8caee3f9eecc31df32445fc98d4ccd8365", block: 14506358, block_date: 2022-04-02, status: success, verified: 2026-10-11, method: "eth_getTransactionReceipt + block timestamp (drpc full-history)", role: "price manipulation + oracle update"}
+      - {tx: "0x600373f67521324c8068cfd025f121a0843d57ec813411661b07edc5ff781842", block: 14506359, block_date: 2022-04-02, status: success, verified: 2026-10-11, method: "同上", role: "borrow against inflated XINV collateral"}
+    sources:
+      - {url: "https://www.certik.com/ko/skynet-report/inverse-finance-02-april-2022", tier: secondary, accessed: 2026-10-11}
+      - {url: "https://itokenly.com/hacks/inverse-finance-frontier", tier: secondary, accessed: 2026-10-11}
+      - {url: "https://smartcontractshacking.com/hacks/inverse-finance-anchor-hack-2022", tier: secondary, accessed: 2026-10-11}
+
+  # ============ oracle 消费侧缺陷类 ============
+
+  - id: 2023-04-04-sentiment
+    date: 2023-04-04
+    date_precision: day
+    chain: arbitrum
+    protocol: Sentiment
+    asset_or_feed: Balancer BPT getPrice（Balancer 池作抵押计价 oracle）
+    oracle_type: AMM 内部计价函数直读
+    root_cause_class: read_only_reentrancy
+    loss_usd_estimate: [500000, 1000000]     # Cointelegraph 初报 $500K+；smartcontractshacking 复盘口径 $1.0M
+    recovered: "86.3%（$863K 返还：95K 赏金谈判后攻击者归还 ~465.75 ETH，其余经 Tornado 洗出；净损失 $137K）"
+    description: >
+      Balancer 的 _joinOrExit 在更新池余额前向用户返还 ETH，只读重入窗口内
+      getPrice() 返回错误值（BPT 价格被算高 16 倍：0.22 ETH → 3.55 ETH）。
+      攻击者在此窗口对 Sentiment 连续 borrow 四次。arXiv:2405.09084 有逐 tx 深度复盘。
+      攻击 tx 经 Beosin/OKLink/Foresight 多源一致引用（0xa9ff…0f74d），
+      本库 2026-10-11 经 5 个公共 RPC + blockscout 未复现（历史窗口/端点限制），
+      诚实标注：tx 为二手一致引用、非本库独立链上核验。
+    attack_cost: "闪电贷（10050 WETH / 606 WBTC / 18M USDC）"
+    mechanism_note: "read-only reentrancy 家族（Sentiment/Sturdy/Conic/dForce/EraLend 同年连环）——oracle 消费侧不做状态一致性检查"
+    outcome: 协议修复（加 no-op 重入护栏）；~95% 资金经链上喊话谈判返还
+    dispute_status: resolved-partial-recovery
+    confidence: multi-source-verified
+    amount_recompute: none-applicable   # 攻击 tx 经 5 端点未复现（见条目内诚实标注），$0.5-1.0M 维持多源口径
+    sources:
+      - {url: "https://export.arxiv.org/pdf/2405.09084", tier: secondary-academic, accessed: 2026-10-11}
+      - {url: "https://tw.tradingview.com/news/cointelegraph:a23d70638094b:0-liquidity-protocol-sentiment-exploited-for-over-500k", tier: secondary, accessed: 2026-10-11}
+      - {url: "https://smartcontractshacking.com/hacks/sentiment-hack-2023", tier: secondary, accessed: 2026-10-11}
+      - {url: "https://www.jinse.com/lives/341667.html", tier: secondary, accessed: 2026-10-11}
+
+  - id: 2023-06-sturdy-finance
+    date: 2023-06-12
+    date_precision: day                    # 2026-10-11 链上核验由 month 升到 day（攻击 tx 区块时间戳）
+    chain: ethereum
+    protocol: Sturdy Finance
+    asset_or_feed: Balancer wstETH 池（作价格 oracle）
+    oracle_type: AMM 池直读
+    root_cause_class: read_only_reentrancy
+    loss_usd_estimate: [775000, 881000]    # liqtags/smartcontractshacking 口径：获利 442 ETH ≈ $775K，总损失 $880,850
+    recovered: unknown
+    description: >
+      依赖 Balancer B-stETH-STABLE 池作价格 oracle，遭 read-only reentrancy 操纵
+      （BlockSec 归因），BPT 价格被推高约 3 倍，攻击者借走大部分抵押。
+      攻击者从 Aave 闪电贷借入 50,000 wstETH + 60,000 WETH 启动，获利 442 ETH。
+      Balancer 事前已公开警告该用法有只读重入风险（ventral.digital 年度复盘）。
+    attack_cost: "Aave 闪电贷 50,000 wstETH + 60,000 WETH（单 tx 内自还）"
+    mechanism_note: "read-only reentrancy 家族（Sentiment/Sturdy/Conic/dForce/EraLend 同年连环）——oracle 消费侧不做状态一致性检查"
+    outcome: 全市场暂停，损失未扩散
+    dispute_status: resolved
+    confidence: tx-hash-chain-verified
+    amount_recompute: confirmed   # 2026-10-12：攻击 EOA 原生 ETH 窗口差分 +442.1176 ETH（llama 时点价 $773K）——与"获利 442 ETH ≈ $775K"精确命中
+    attacker_address: "0x1E8419E724d51E87f78E222D935fbbdeb631a08B"
+    onchain_evidence:
+      - {tx: "0xeb87ebc0a18aca7d2a9ffcabf61aa69c9e8d3c6efade9e2303f8857717fb9eb7", block: 17460610, block_date: 2023-06-12, status: success, verified: 2026-10-11, method: "eth_getTransactionReceipt + block timestamp (llamarpc full-history)"}
+    sources:
+      - {url: "http://ventral.digital/posts/2024/1/19/ethereum-smart-contract-auditors-2023-rewind/", tier: secondary, accessed: 2026-10-11}
+      - {url: "https://www.smartcontractaudit.com/guides/defi-oracle-manipulation-incidents-2020-2026", tier: secondary, accessed: 2026-10-11}
+      - {url: "https://github.com/liqtags/crypto-rekts/blob/main/rekts/Sturdy-Finance.md", tier: secondary, accessed: 2026-10-11}
+      - {url: "https://blog.solidityscan.com/sturdy-finance-hack-analysis-bd8605cd2956", tier: secondary, accessed: 2026-10-11}
+
+  # ============ oracle 消费侧缺陷类（续）/ 合成价模型 ============
+
+  - id: 2024-03-woofi
+    date: 2024-03-05
+    date_precision: day                    # 2026-10-11 链上核验由 month+multi 升级（原为单源模糊记录）
+    chain: arbitrum
+    protocol: WOOFi (WooPPV2 swap)
+    asset_or_feed: sPMM 合成价模型内部价（WOO）
+    oracle_type: 合成/sPMM oracle
+    root_cause_class: amm_spot_manipulation
+    loss_usd_estimate: [8500000, 9000000]  # verichains/lingshi 口径 ~$9M；smartcontractshacking 净利 $8.75M
+    recovered: none
+    description: >
+      WooPPV2 的 sPMM 卖出定价公式 newPrice=(1−2k·price·baseAmount)·price 允许攻击者
+      通过组合 oracle.price 与 baseAmount 把内部价压到近零（8.62M 倍跌幅），
+      用极少量 USDC.e 换走 ~8.57M WOO。Chainlink 回退校验未覆盖 WOO，异常价被接受而非 revert
+      （smartcontractshacking 复盘）。攻击者闪电贷借入 10.5M USDC.e + 2.7M WOO，
+      三轮循环净利约 $8.75M。官方 13 分钟内暂停合约；修复=移除 2 倍系数（WooPoolV2 f5fe28a）。
+    attack_cost: "闪电贷 10,504,796 USDC.e + 2,721,172 WOO（单 tx 内自还）"
+    mechanism_note: "合成价模型的输入假设全成攻击面：公式可被外生变量推到定义域边界 + fallback 校验白名单缺口"
+    outcome: 合约暂停并修复；资金未追回（攻击者转移混淆中）
+    dispute_status: unresolved
+    confidence: tx-hash-chain-verified
+    amount_recompute: partial   # 2026-10-12：攻击 EOA 0x9961…净得 +887,069 WOO（$0.51M）——被操纵的 8.57M WOO 在 tx 内经池子卖出回 USDC.e，利润流出到未收录的新地址，单 tx 范围未捕获；~$8.75M 口径维持二手
+    attacker_address: "0x9961190B258897BCa7a12B8f37F415E689D281C4"
+    onchain_evidence:
+      - {tx: "0xe80a16678b5008d5be1484ec6e9e77dc6307632030553405863ffb38c1f94266", block: 187384608, block_date: 2024-03-05, status: success, verified: 2026-10-11, method: "eth_getTransactionReceipt + block timestamp (arbitrum full-history)"}
+    sources:
+      - {url: "https://blog.verichains.io/p/weekly-highlight-the-woofi-hack-explain", tier: secondary, accessed: 2026-10-11}
+      - {url: "https://smartcontractshacking.com/hacks/woofi-swap-hack-2024", tier: secondary, accessed: 2026-10-11}
+      - {url: "https://finance.sina.com.cn/blockchain/2024-03-19/doc-inanweuq9251784.shtml", tier: secondary, accessed: 2026-10-11}
+
+  - id: 2025-03-26-hyperliquid-jelly
+    date: 2025-03-26
+    date_precision: day                    # 2026-10-11 由 month+单源升级：多源交叉（Arkham/Lookonchain/PANews 复盘等）+ 日精度
+    chain: hyperliquid-l1
+    protocol: Hyperliquid (HLP 金库)
+    asset_or_feed: JELLY 永续 mark price（验证人报告的外部现货加权中位数）
+    oracle_type: 验证人委员会报告价
+    root_cause_class: mark_price_manipulation
+    loss_usd_estimate: [12000000, 12000000]  # HLP 浮亏峰值口径；最终强平后 HLP 反而 +$700K
+    recovered: "干预反转（验证人强平 $0.0095 后 HLP 净赚 ~$700K；基金会补偿非标记地址用户）"
+    description: >
+      2025-03-26：攻击者集群（0xde95/0x20e8/0x67f 等，Arkham 归因）四天前开始从
+      Gate/Bitget 提走 ~20% JELLY 流通量收紧现货盘口，随后开 $4.1M JELLY 永续空头并
+      撤保证金触发清算，HLP 金库被动接盘；同时配合钱包拉抬 JELLY 现货
+      （市值 $10M → $50M+，涨幅 ~500%），mark price 跟随污染源飙升，
+      HLP 浮亏一度 $12M（若 mcap 到 $150M 即全库穿仓）。验证人委员会紧急投票：
+      下架 JELLY 永续 + 把 oracle 价人工定到 $0.0095 强平一切仓位，HLP 反转获利。
+      Mango 之后的第二起 mark-price 通胀案——模式已从链上 AMM oracle 迁移到
+      验证人报告价，且是"合规性攻击"（未篡改任何合约，全部按公开规则执行）。
+    attack_cost: "约 $4-7M 自有资金跨多钱包布局（非闪电贷，承担真实持仓风险）"
+    mechanism_note: "两层失效叠加：小样本中位数（源少且流动性重叠）可被资本捕获 + HLP 自动接盘是可预测的无条件对手方；最终靠人工投票救市=定价权实际是中心化的"
+    outcome: 验证人投票干预（下架+强平+补偿）；引发'FTX 2.0'去中心化性质争论
+    dispute_status: resolved-controversial
+    confidence: multi-source-verified
+    amount_recompute: none-applicable   # 非 EVM L1，HLP 浮亏 $12M 为官方/多源口径，链上复算不适用
+    sources:
+      - {url: "https://www.panewslab.com/zh/articles/ef8850af-0ae4-46a3-b281-eba8a75682ca", tier: secondary, accessed: 2026-10-11}
+      - {url: "https://moneycheck.com/?p=105026", tier: secondary, accessed: 2026-10-11}
+      - {url: "https://www.smartcontractaudit.com/guides/defi-oracle-manipulation-incidents-2020-2026", tier: secondary, accessed: 2026-10-11}
+
+  # ============ wrapper/配置错误类 ============
+
+  - id: 2026-02-15-moonwell-cbeth
+    date: 2026-02-15
+    date_precision: day
+    chain: base
+    protocol: Moonwell
+    asset_or_feed: cbETH（Chainlink OEV wrapper 配置错误：把 cbETH/ETH 比价当 USD 价）
+    oracle_type: Chainlink feed + OEV wrapper
+    root_cause_class: wrapper_config_error
+    loss_usd_estimate: [1780000, 1780000]    # 坏账口径
+    description: >
+      OEV wrapper 配置错误，把 cbETH/ETH 比价（~$1.12）当作 cbETH 的 USD 价格
+      （实际 ~$2,200），1,096.317 cbETH 被清算，坏账 $1,779,044.83。
+      官方复盘（Anthias Labs，Moonwell 治理论坛）：2026-02-15 18:01 UTC 治理提案
+      MIP-X43 执行、在 Base/OP 全市场启用 Chainlink OEV wrapper，其中一路配置
+      只用了 cbETH/ETH 汇率、漏乘 ETH/USD。监控分钟级发现，借/供 cap 降至 0.01 止血；
+      但修正需治理投票 + timelock，清算持续到正式修复。少数用户还反向利用错误价
+      （存极少量抵押、按 ~$1 借出 cbETH）制造额外坏账。PR 记录显示 Claude Opus 4.6
+      为共同作者（"vibe-coded Solidity" 争议；Moonwell 未归因，专家口径＝低级公式错误，
+      人工配置同样可能，暴露的是集成测试与价格 sanity 缺失）。
+    recovered: unknown
+    attack_cost: "零（无攻击者，配置错误，套利者只是响应了错误价格）"
+    mechanism_note: "出事的从来不是参数本身，是接线（地基报告块①的核心论据）；timelock 治理速度 < 清算机器人速度＝止血窗口缺口"
+    outcome: cap 归零止血；新治理提案修复配置；坏账处置待治理
+    dispute_status: resolved-official-postmortem
+    confidence: primary-disclosure-verified   # Anthias Labs 官方 post-mortem（Moonwell 治理论坛）
+    amount_recompute: none-applicable   # 配置错误类无攻击 tx，坏账 $1,779,044.83 为官方复盘口径
+    sources:
+      - {url: "https://www.theblock.co/news/regulation/2026-02-18-defi-lending-protocol-moonwell-hit-with-1-8-million-bad-debt-after-oracle-misconfiguration-390302", tier: secondary, accessed: 2026-10-11}
+      - {url: "https://decrypt.co/358374", tier: secondary, accessed: 2026-10-11}
+      - {url: "~/Documents/PriorSeal/docs/research/insight-procurement-validation-playbook-2026-10-10.md", tier: internal-secondary, accessed: 2026-10-11}
+
+  - id: 2026-03-10-aave-capo-wsteth
+    date: 2026-03-10
+    date_precision: day
+    chain: ethereum
+    protocol: Aave
+    asset_or_feed: wstETH（CAPO 风险 oracle 配置）
+    oracle_type: Chainlink feed + CAPO（caps/rate 限幅器）
+    root_cause_class: wrapper_config_error
+    loss_usd_estimate: [26000000, 27000000]
+    description: >
+      CAPO 限幅 oracle 配置错位使 wstETH 链上价低于市场约 2.85%，触发约
+      10,938 wstETH（$26-27M）清算（34 个账户，E-Mode 杠杆仓位），清算人获利约 499 ETH，
+      协议零坏账。官方复盘（Chaos Labs，governance.aave.com + X 长文）机制：
+      链下风险 oracle 试图把 snapshotRatio 从 ~1.1572 更新到 7 天前的汇率 1.2282，
+      但链上规则限制比率每 3 天最多涨 3%（只能到 1.1919），而 snapshotTimestamp
+      没有此限制、直接跳到 7 天前——低比率配新时间戳，CAPO 公式从过低参考点外推，
+      算出 ~1.1939 vs 真实 ~1.228。风险 Steward 止血：wstETH 借款 cap 降到 1 +
+      手动对齐 snapshotRatio 与时间戳。赔付：BuilderNet 退款回收 141.5 ETH +
+      最多 345 ETH DAO 金库，受影响用户全额获偿。
+    recovered: n-a                             # 清算是市场行为，无"追回"概念；用户获 DAO 全额赔付方案
+    attack_cost: "零（配置语义错误 + 清算激励照常运转）"
+    mechanism_note: "限幅器/包装器本为保护设计，配置错误时反而制造价格偏差——且偏差在'安全'阈值内被当作正常；同一参数对（ratio/timestamp）受两套不同更新约束＝错位是结构性的"
+    outcome: 全额赔付方案公布；官方复盘完整（governance.aave.com）
+    dispute_status: resolved-official-postmortem
+    confidence: primary-disclosure-verified   # Chaos Labs 官方 post-mortem
+    amount_recompute: none-applicable   # 配置错误类，清算为市场行为，10,938 wstETH/-27M 为官方复盘口径
+    sources:
+      - {url: "https://governance.aave.com/t/post-mortem-exchange-rate-misalignment-on-wsteth-core-and-prime-instances/", tier: primary, accessed: 2026-10-11}
+      - {url: "https://smartcontractshacking.com/hacks/aave-v3-hack-2026", tier: secondary, accessed: 2026-10-11}
+      - {url: "~/Documents/PriorSeal/docs/research/insight-procurement-validation-playbook-2026-10-10.md", tier: internal-secondary, accessed: 2026-10-11}
+
+  # ============ 链下密钥类 ============
+
+  - id: 2026-03-22-resolv
+    date: 2026-03-22
+    date_precision: day                    # 2026-10-11 由 month+单源升级：两笔核心 tx 链上实测 + CertiK/Nexus Mutual 独立复盘
+    chain: ethereum
+    protocol: Resolv
+    asset_or_feed: 链下签名授权的铸币完成（completeSwap 数额）
+    oracle_type: 链下 oracle（AWS KMS 签名密钥）
+    root_cause_class: offchain_key_compromise
+    loss_usd_estimate: [23000000, 25000000]
+    recovered: unknown                       # 官方提出 90% 返还换和解（72 小时窗口），结果未定
+    description: >
+      攻击者攻破 Resolv 的 AWS KMS 环境，取得持有 SERVICE_ROLE 的链下签名密钥
+      （0x15Ca…e398，普通 EOA 非多签），在 ~17 分钟内先存入 ~$200K USDC（三笔 requestSwap），
+      再以合法签名身份调用 completeSwap 指定超铸数额——合约只校验"不低于用户最低期望"，
+      无链上铸币上限、无限速、无抵押率校验，超铸 80M 无抵押 USR。
+      USR 从 $1.00 跌至 $0.025；攻击者换 wstUSR 后经 Curve/KyberSwap/Velodrome/Uniswap
+      提走 ~11,400 ETH（$23-25M）。下游放大器：Morpho 等借贷市场用 Resolv 的 NAV oracle
+      （事件前 15 小时未更新、仍报 $1.00），脱锚 USR 仍可按面值抵押借款，~$7.77M 敞口被锁。
+    attack_cost: "零攻击成本（基础设施入侵 + 合约无上限设计缺口）；初始资本 ~$200K USDC"
+    mechanism_note: "签名验证防伪造不防密钥失窃——信任根在签名者而非签名；NAV oracle 24h 更新周期 + 无 staleness 冻结是第二层独立失效"
+    outcome: 协议全停；官方提出 90% 返还和解；Fluid 承诺全额赔付用户
+    dispute_status: contested-ongoing
+    confidence: tx-hash-chain-verified
+    amount_recompute: partial   # 2026-10-12：攻击 EOA 0x15Ca… 在两 tx 内零直接代币净流（签名 EOA，全部资产经完成合约 0xa27a…中转，日志级对 EOA 不可见）；~11,400 ETH 提款的完整复算需 swap 合约→Curve→退出的多跳路径追踪，超出本 v1 范围；$23-25M 口径维持二手+官方复盘
+    attacker_address: "0x15CAd41e6BdCaDc7121ce65080489C92CF6de398"
+    onchain_evidence:
+      - {tx: "0xfe37f25efd67d0a4da4afe48509b258df48757b97810b28ce4c649658dc33743", block: 24710031, block_date: "2026-03-22T02:21Z", status: success, verified: 2026-10-11, method: "eth_getTransactionReceipt + block timestamp (ankr full-history)"}
+      - {tx: "0x41b6b9376d174165cbd54ba576c8f6675ff966f17609a7b80d27d8652db1f18f", block: 24710428, block_date: "2026-03-22T03:41Z", status: success, verified: 2026-10-11, method: "eth_getTransactionReceipt + block timestamp (ankr full-history)"}
+    sources:
+      - {url: "https://www.certik.com/blog/resolv-protocol-incident-analysis", tier: secondary, accessed: 2026-10-11}
+      - {url: "https://nexusmutual.io/blog/resolv-protocol-incident-report-by-nexus-mutual", tier: secondary, accessed: 2026-10-11}
+      - {url: "https://www.0xteam.space/blog/resolv-labs-usr-exploit-2026", tier: secondary, accessed: 2026-10-11}
+      - {url: "https://cryip.co/?p=5023", tier: secondary, accessed: 2026-10-11}
+      - {url: "https://www.smartcontractaudit.com/guides/defi-oracle-manipulation-incidents-2020-2026", tier: secondary, accessed: 2026-10-11}

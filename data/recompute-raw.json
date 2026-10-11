@@ -1,0 +1,730 @@
+[
+  {
+    "id": "2020-10-26-harvest-finance",
+    "chain": "ethereum",
+    "txs": [
+      {
+        "hash": "0x35f8d2f572fceaac9288e5d462117850ef2694786992a8c3f6d02612277b0877",
+        "note": "recorded main attack tx",
+        "status": "success",
+        "block": 11129474,
+        "contract_address": null,
+        "block_ts": 1603680838,
+        "to": "0xc6028a9fa486f52efd2b95b949ac630d287ce0af",
+        "erc20_flows": {
+          "0xdac17f958d2ee523a2206206994597c13d831ec7": {
+            "0x0d4a11d5eeaac28ec3f61d100daf4d40471f1852": "26150459777",
+            "0xc6028a9fa486f52efd2b95b949ac630d287ce0af": "0",
+            "0x45f783cce6b7ff23b2ab2d70e416cdb7d6055f51": "-26150459777"
+          },
+          "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48": {
+            "0xb4e16d0168e52d35cacd2c6185b44281ec28c9dc": "202785918789",
+            "0xc6028a9fa486f52efd2b95b949ac630d287ce0af": "691781898529",
+            "0x45f783cce6b7ff23b2ab2d70e416cdb7d6055f51": "67541172556",
+            "0xf0358e8c3cd5fa238a29301d0bea3d63a17bedbe": "-962108989874"
+          },
+          "0xf0358e8c3cd5fa238a29301d0bea3d63a17bedbe": {
+            "0x0000000000000000000000000000000000000000": "0",
+            "0xc6028a9fa486f52efd2b95b949ac630d287ce0af": "0"
+          },
+          "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2": {
+            "0xb4e16d0168e52d35cacd2c6185b44281ec28c9dc": "-90967236303552041078",
+            "0xc6028a9fa486f52efd2b95b949ac630d287ce0af": "20000000000000000000",
+            "0x0d4a11d5eeaac28ec3f61d100daf4d40471f1852": "70967236303552041078"
+          }
+        },
+        "counterparties": [
+          "0x0d4a11d5eeaac28ec3f61d100daf4d40471f1852",
+          "0xc6028a9fa486f52efd2b95b949ac630d287ce0af",
+          "0xb4e16d0168e52d35cacd2c6185b44281ec28c9dc",
+          "0x45f783cce6b7ff23b2ab2d70e416cdb7d6055f51",
+          "0x0000000000000000000000000000000000000000",
+          "0xf0358e8c3cd5fa238a29301d0bea3d63a17bedbe"
+        ]
+      }
+    ],
+    "attacker_effective": [
+      "0xf224ab004461540778a914ea397c589b677e27bb",
+      "0xc6028a9fa486f52efd2b95b949ac630d287ce0af"
+    ],
+    "native_balance_diff": {
+      "0xf224ab004461540778a914ea397c589b677e27bb": {
+        "before_wei": "7612356700000000000",
+        "after_wei": "22417423425000000000",
+        "delta_wei": "14805066725000000000",
+        "window": [
+          11129473,
+          11129474
+        ]
+      },
+      "0xc6028a9fa486f52efd2b95b949ac630d287ce0af": {
+        "before_wei": "0",
+        "after_wei": "0",
+        "delta_wei": "0",
+        "window": [
+          11129473,
+          11129474
+        ]
+      }
+    }
+  },
+  {
+    "id": "2023-02-01-bonqdao",
+    "chain": "polygon",
+    "txs": [
+      {
+        "hash": "0x31957ecc43774d19f54d9968e95c69c882468b46860f921668f2c55fadd51b19",
+        "note": "mint 100M BEUR against pumped WALBT",
+        "status": "success",
+        "block": 38792978,
+        "contract_address": null,
+        "block_ts": 1675276158,
+        "to": "0xed596991ac5f1aa1858da66c67f7cfa76e54b5f1",
+        "erc20_flows": {
+          "0xe3322702bedaaed36cddab233360b939775ae5f1": {
+            "0xed596991ac5f1aa1858da66c67f7cfa76e54b5f1": "-10000000000000000000",
+            "0xbaf48429b4d30bdfad488508d3b528033331fe8a": "10000000000000000000"
+          },
+          "0x35b2ece5b1ed6a7a99b83508f8ceeab8661e0632": {
+            "0xed596991ac5f1aa1858da66c67f7cfa76e54b5f1": "-13359732562723399770",
+            "0x4248fd3e2c055a02117eb13de4276170003ca295": "100000000000000000",
+            "0x5343c5d0af82b89df164a9e829a7102c4edb5402": "13259732562723399770"
+          },
+          "0x338eb4d394a4327e5db80d08628fa56ea2fd4b81": {
+            "0x4248fd3e2c055a02117eb13de4276170003ca295": "-100000000000000000000000000",
+            "0xed596991ac5f1aa1858da66c67f7cfa76e54b5f1": "100000000000000000000000000"
+          }
+        },
+        "counterparties": [
+          "0xed596991ac5f1aa1858da66c67f7cfa76e54b5f1",
+          "0xbaf48429b4d30bdfad488508d3b528033331fe8a",
+          "0x4248fd3e2c055a02117eb13de4276170003ca295",
+          "0x5343c5d0af82b89df164a9e829a7102c4edb5402"
+        ]
+      },
+      {
+        "hash": "0xa02d0c3d16d6ee0e0b6a42c3cc91997c2b40c87d777136dedebe8ee0f47f32b1",
+        "note": "dump price + liquidate troves",
+        "status": "success",
+        "block": 38793029,
+        "contract_address": null,
+        "block_ts": 1675276266,
+        "to": "0xed596991ac5f1aa1858da66c67f7cfa76e54b5f1",
+        "erc20_flows": {
+          "0xe3322702bedaaed36cddab233360b939775ae5f1": {
+            "0xed596991ac5f1aa1858da66c67f7cfa76e54b5f1": "-10000000000000000000",
+            "0xb5c0ba8ed0f4fb9a31fccf84b9fb3da639a1ede5": "10000000000000000000"
+          },
+          "0x338eb4d394a4327e5db80d08628fa56ea2fd4b81": {
+            "0xed596991ac5f1aa1858da66c67f7cfa76e54b5f1": "-1341461082465343593140670",
+            "0x5343c5d0af82b89df164a9e829a7102c4edb5402": "1341461082465343593140670"
+          },
+          "0x35b2ece5b1ed6a7a99b83508f8ceeab8661e0632": {
+            "0x5343c5d0af82b89df164a9e829a7102c4edb5402": "-113813998369826208354681311",
+            "0xed596991ac5f1aa1858da66c67f7cfa76e54b5f1": "113813998369826208354681311"
+          }
+        },
+        "counterparties": [
+          "0xed596991ac5f1aa1858da66c67f7cfa76e54b5f1",
+          "0xb5c0ba8ed0f4fb9a31fccf84b9fb3da639a1ede5",
+          "0x5343c5d0af82b89df164a9e829a7102c4edb5402"
+        ]
+      }
+    ],
+    "attacker_effective": [
+      "0xcacf2d28b2a5309e099f0c6e8c60ec3ddf656642",
+      "0xed596991ac5f1aa1858da66c67f7cfa76e54b5f1"
+    ],
+    "native_balance_diff": {
+      "0xcacf2d28b2a5309e099f0c6e8c60ec3ddf656642": {
+        "before_wei": "9872236339444689871",
+        "after_wei": "8133802608257832297",
+        "delta_wei": "-1738433731186857574",
+        "window": [
+          38792977,
+          38793029
+        ]
+      },
+      "0xed596991ac5f1aa1858da66c67f7cfa76e54b5f1": {
+        "before_wei": "0",
+        "after_wei": "0",
+        "delta_wei": "0",
+        "window": [
+          38792977,
+          38793029
+        ]
+      }
+    }
+  },
+  {
+    "id": "2024-06-10-uwu-lend",
+    "chain": "ethereum",
+    "txs": [
+      {
+        "hash": "0xca1bbf3b320662c89232006f1ec6624b56242850f07e0f1dadbe4f69ba0d6ac3",
+        "note": "first of 3 attack txs (6 min window)",
+        "status": "success",
+        "block": 20061352,
+        "contract_address": "0x13f3fee69160162a78284c64c1100a3df476d890",
+        "block_ts": 1718021555,
+        "to": null,
+        "erc20_flows": {
+          "0xf1293141fc6ab23b2a0143acc196e3429e0b67a6": {
+            "0xf19d66e82ffe8e203b30df9e81359f8a201517ad": "-44241616403864745948855607",
+            "0xed1521ee1558af6087ad6bc6790ba1ee2a4174ec": "41476516316123199327052132",
+            "0x0000000000000000000000000000000000000000": "2765100087741546621803475"
+          },
+          "0xbac9d17f290260a1d5f1b69cac84dba6b4488d66": {
+            "0x0000000000000000000000000000000000000000": "-481297021573695722911",
+            "0xed1521ee1558af6087ad6bc6790ba1ee2a4174ec": "481297021573695722911"
+          },
+          "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2": {
+            "0x67fadbd9bf8899d7c578db22d7af5e2e500e13e5": "-481297021573695722911",
+            "0xed1521ee1558af6087ad6bc6790ba1ee2a4174ec": "0",
+            "0xf19d66e82ffe8e203b30df9e81359f8a201517ad": "481297021573695722911"
+          },
+          "0xe42016bd5884555d9053a0f0563a34992c1d44e9": {
+            "0x0000000000000000000000000000000000000000": "-1393231116642762378019902",
+            "0xed1521ee1558af6087ad6bc6790ba1ee2a4174ec": "1393231116642762378019902"
+          },
+          "0x83f20f44975d03b1b09e64809b757c47f942beea": {
+            "0x20e61ba4365cc4bfa82b1449982e091904564aa4": "-1393231116642762378019902",
+            "0xed1521ee1558af6087ad6bc6790ba1ee2a4174ec": "1393231116642762378019902"
+          },
+          "0x64e4843ffdfb62d205b049ddbe8b949534e4e2d4": {
+            "0x0000000000000000000000000000000000000000": "-1761017372",
+            "0xed1521ee1558af6087ad6bc6790ba1ee2a4174ec": "1761017372"
+          },
+          "0x2260fac5e5542a773aa44fbcfedf7c193bc2c599": {
+            "0x6ace5c946a3abd8241f31f182c479e67a4d8fc8d": "-1761017372",
+            "0xed1521ee1558af6087ad6bc6790ba1ee2a4174ec": "0",
+            "0xf19d66e82ffe8e203b30df9e81359f8a201517ad": "1761017372"
+          },
+          "0xeb6a0037ca1087e783494b533a53a60e43f2dabd": {
+            "0x0000000000000000000000000000000000000000": "-233680825790709832164322",
+            "0xed1521ee1558af6087ad6bc6790ba1ee2a4174ec": "233680825790709832164322"
+          },
+          "0xf939e0a03fb07f59a73314e73794be0e57ac1b4e": {
+            "0xeb61e567cbaeaccb6c259def92900bc59d8a14cc": "-233680825790709832164322",
+            "0xed1521ee1558af6087ad6bc6790ba1ee2a4174ec": "0",
+            "0x4dece678ceceb27446b35c672dc7d61f30bad69e": "233680825790709832164322"
+          },
+          "0xec12f63116bd2493104a26fbdbcd70f51ab7b2c1": {
+            "0x0000000000000000000000000000000000000000": "-498960112775926423531666",
+            "0xed1521ee1558af6087ad6bc6790ba1ee2a4174ec": "498960112775926423531666"
+          },
+          "0xb9d7dddca9a4ac480991865efef82e01273f79c3": {
+            "0x51144708b82ea3b5b1002c9dc38b71ec63b7e670": "-498960112775926423531666",
+            "0xed1521ee1558af6087ad6bc6790ba1ee2a4174ec": "0",
+            "0x841ddf093f5188989fa1524e7b893de64b421f47": "498960112775926423531666"
+          },
+          "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48": {
+            "0x4dece678ceceb27446b35c672dc7d61f30bad69e": "-232486185057",
+            "0xed1521ee1558af6087ad6bc6790ba1ee2a4174ec": "0",
+            "0xf19d66e82ffe8e203b30df9e81359f8a201517ad": "232486185057"
+          },
+          "0x6b175474e89094c44da98b954eedeac495271d0f": {
+            "0x0000000000000000000000000000000000000000": "-1516295917623378295994947",
+            "0xed1521ee1558af6087ad6bc6790ba1ee2a4174ec": "0",
+            "0xf19d66e82ffe8e203b30df9e81359f8a201517ad": "1516295917623378295994947"
+          }
+        },
+        "counterparties": [
+          "0xf19d66e82ffe8e203b30df9e81359f8a201517ad",
+          "0xed1521ee1558af6087ad6bc6790ba1ee2a4174ec",
+          "0x0000000000000000000000000000000000000000",
+          "0x67fadbd9bf8899d7c578db22d7af5e2e500e13e5",
+          "0x20e61ba4365cc4bfa82b1449982e091904564aa4",
+          "0x6ace5c946a3abd8241f31f182c479e67a4d8fc8d",
+          "0xeb61e567cbaeaccb6c259def92900bc59d8a14cc",
+          "0x51144708b82ea3b5b1002c9dc38b71ec63b7e670",
+          "0x4dece678ceceb27446b35c672dc7d61f30bad69e",
+          "0x841ddf093f5188989fa1524e7b893de64b421f47"
+        ]
+      }
+    ],
+    "attacker_effective": [
+      "0xed1521ee1558af6087ad6bc6790ba1ee2a4174ec",
+      "0x13f3fee69160162a78284c64c1100a3df476d890"
+    ],
+    "native_balance_diff": {
+      "0xed1521ee1558af6087ad6bc6790ba1ee2a4174ec": {
+        "before_wei": "0",
+        "after_wei": "0",
+        "delta_wei": "0",
+        "window": [
+          20061351,
+          20061352
+        ]
+      },
+      "0x13f3fee69160162a78284c64c1100a3df476d890": {
+        "before_wei": "0",
+        "after_wei": "0",
+        "delta_wei": "0",
+        "window": [
+          20061351,
+          20061352
+        ]
+      }
+    }
+  },
+  {
+    "id": "2021-10-27-cream-finance",
+    "chain": "ethereum",
+    "txs": [
+      {
+        "hash": "0x0fe2542079644e107cbf13690eb9c2c65963ccb79089ff96bfaf8dced2331c92",
+        "note": "recursive inflate + borrow",
+        "status": "success",
+        "block": 13499798,
+        "contract_address": null,
+        "block_ts": 1635342850,
+        "to": "0x961d2b694d9097f35cfffa363ef98823928a330d",
+        "erc20_flows": {
+          "0x6b175474e89094c44da98b954eedeac495271d0f": {
+            "0x0000000000000000000000000000000000000000": "-500000000000000000000000000",
+            "0x961d2b694d9097f35cfffa363ef98823928a330d": "0",
+            "0x16de59092dae5ccf4a1e6439d611fd0653f0bd01": "6356534901208345789354257",
+            "0x6c6bc977e13df9b0de53b251522280bb72383700": "-6356534901208345789354257",
+            "0x1eb4cf3a948e7d72a198fe073ccb8c7a948cd853": "500000000000000000000000000"
+          },
+          "0x16de59092dae5ccf4a1e6439d611fd0653f0bd01": {
+            "0x0000000000000000000000000000000000000000": "-5734432626782012827123848",
+            "0x961d2b694d9097f35cfffa363ef98823928a330d": "0",
+            "0x45f783cce6b7ff23b2ab2d70e416cdb7d6055f51": "5734432626782012827123848"
+          },
+          "0xd6ad7a6750a7593e092a9b218d66c0a814a3436e": {
+            "0x961d2b694d9097f35cfffa363ef98823928a330d": "0",
+            "0x45f783cce6b7ff23b2ab2d70e416cdb7d6055f51": "0"
+          },
+          "0x83f798e925bcd4017eb265844fddabb448f1707d": {
+            "0x961d2b694d9097f35cfffa363ef98823928a330d": "0",
+            "0x45f783cce6b7ff23b2ab2d70e416cdb7d6055f51": "0"
+          },
+          "0x73a052500105205d34daf004eab301916da8190f": {
+            "0x961d2b694d9097f35cfffa363ef98823928a330d": "0",
+            "0x45f783cce6b7ff23b2ab2d70e416cdb7d6055f51": "0"
+          },
+          "0xdf5e0e81dff6faf3a7e52ba697820c5e32d806a8": {
+            "0x0000000000000000000000000000000000000000": "-5571227307467709526351415",
+            "0x961d2b694d9097f35cfffa363ef98823928a330d": "166322912794066256722505",
+            "0x4b5bfd52124784745c1071dcb244c6688d2533d3": "5404904394673643269628910"
+          },
+          "0x4b5bfd52124784745c1071dcb244c6688d2533d3": {
+            "0x0000000000000000000000000000000000000000": "3023597034289186466259766",
+            "0x961d2b694d9097f35cfffa363ef98823928a330d": "0",
+            "0x4baa77013ccd6705ab0522853cb0e9d453579dd4": "446756774416766306389278551",
+            "0xf701426b8126bc60530574cecdcb365d47973284": "-446758198605138820901672830",
+            "0xa89bd606d5dadda60242e8dedeebc95c41ad8986": "-3022172845916671953865487"
+          },
+          "0x4baa77013ccd6705ab0522853cb0e9d453579dd4": {
+            "0x4baa77013ccd6705ab0522853cb0e9d453579dd4": "-2233777434138713187",
+            "0x961d2b694d9097f35cfffa363ef98823928a330d": "6701346544258818449",
+            "0xf701426b8126bc60530574cecdcb365d47973284": "-4467569110120105262"
+          },
+          "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2": {
+            "0xf701426b8126bc60530574cecdcb365d47973284": "518573851241603117840047",
+            "0x961d2b694d9097f35cfffa363ef98823928a330d": "-520447785044135506493672",
+            "0x8ad599c3a0ff1de082011efddc58f1908eb6e6d8": "1873933802532388653625"
+          },
+          "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48": {
+            "0x8ad599c3a0ff1de082011efddc58f1908eb6e6d8": "-7453002766252",
+            "0x961d2b694d9097f35cfffa363ef98823928a330d": "1690395696011",
+            "0x8038c01a0390a8c547446a0b2c18fc9aefecc10c": "3726501383126",
+            "0x44fbebd2f576670a6c33f6fc0b00aa8c5753b322": "-4324457152800",
+            "0x6c6bc977e13df9b0de53b251522280bb72383700": "6360562839915"
+          },
+          "0x5bc25f649fc4e26069ddf4cf4010f9f706c23831": {
+            "0x8038c01a0390a8c547446a0b2c18fc9aefecc10c": "-3383317408375847206752615",
+            "0x961d2b694d9097f35cfffa363ef98823928a330d": "0",
+            "0x0000000000000000000000000000000000000000": "3383317408375847206752615"
+          },
+          "0xcbc1065255cbc3ab41a6868c22d1f1c573ab89fd": {
+            "0xfd609a03b393f1a1cfcacedabf068cad09a924e2": "-12266463816009145730493",
+            "0x961d2b694d9097f35cfffa363ef98823928a330d": "12266463816009145730493"
+          },
+          "0x8798249c2e607446efb7ad49ec89dd1865ff4272": {
+            "0x228619cca194fbe3ebeb2f835ec1ea5080dafbb2": "-623760529988486822779519",
+            "0x961d2b694d9097f35cfffa363ef98823928a330d": "623760529988486822779519"
+          },
+          "0x0d438f3b5175bebc262bf23753c1e53d03432bde": {
+            "0xeff039c3c1d668f408d09dd7b63008622a77532c": "-135402944541301517084130",
+            "0x961d2b694d9097f35cfffa363ef98823928a330d": "135402944541301517084130"
+          },
+          "0xbc396689893d065f41bc2c6ecbee5e0085233447": {
+            "0x299e254a8a165bbeb76d9d69305013329eea3a3b": "-447222593590652214743874",
+            "0x961d2b694d9097f35cfffa363ef98823928a330d": "447222593590652214743874"
+          },
+          "0x3155ba85d5f96b2d030a4966af206230e46849cb": {
+            "0x8379baa817c5c5ab929b03ee8e3c48e45018ae41": "-418917294792442850457949",
+            "0x961d2b694d9097f35cfffa363ef98823928a330d": "418917294792442850457949"
+          },
+          "0x1494ca1f11d487c2bbe4543e90080aeba4ba3c2b": {
+            "0x2a537fa9ffaea8c1a41d3c2b68a9cb791529366d": "-15567575750097560251951",
+            "0x961d2b694d9097f35cfffa363ef98823928a330d": "15567575750097560251951"
+          },
+          "0x1f9840a85d5af5bf1d1762f925bdaddc4201f984": {
+            "0xe89a6d0509faf730bd707bf868d9a2a744a363c7": "-156629158238930877722356",
+            "0x961d2b694d9097f35cfffa363ef98823928a330d": "156629158238930877722356"
+          },
+          "0x956f47f50a910163d8bf957cf5846d573e7f87ca": {
+            "0x8c3b7a4320ba70f8239f83770c4015b5bc4e6f91": "-3817374503105485458327683",
+            "0x961d2b694d9097f35cfffa363ef98823928a330d": "3817374503105485458327683"
+          },
+          "0xdac17f958d2ee523a2206206994597c13d831ec7": {
+            "0x797aab1ce7c01eb727ab980762ba88e7133d2157": "-3780808755759",
+            "0x961d2b694d9097f35cfffa363ef98823928a330d": "3780808755759"
+          },
+          "0xdcd90c7f6324cfa40d7169ef80b12031770b4325": {
+            "0x1f9b4756b008106c806c7e64322d7ed3b72cb284": "-747480864886637652351",
+            "0x961d2b694d9097f35cfffa363ef98823928a330d": "747480864886637652351"
+          },
+          "0x6810e776880c02933d47db1b9fc05908e5386b96": {
+            "0x523effc8bfefc2948211a05a905f761cba5e8e9e": "-6937023757101307138911",
+            "0x961d2b694d9097f35cfffa363ef98823928a330d": "6937023757101307138911"
+          },
+          "0x50d1c9771902476076ecfc8b2a83ad6b9355a4c9": {
+            "0x10fdbd1e48ee2fd9336a482d746138ae19e649db": "-38922154159018669294167",
+            "0x961d2b694d9097f35cfffa363ef98823928a330d": "38922154159018669294167"
+          },
+          "0x25f8087ead173b73d6e8b84329989a8eea16cf73": {
+            "0x4112a717edd051f77d834a6703a1ef5e3d73387f": "-341681583099484551498506",
+            "0x961d2b694d9097f35cfffa363ef98823928a330d": "341681583099484551498506"
+          }
+        },
+        "counterparties": [
+          "0x0000000000000000000000000000000000000000",
+          "0x961d2b694d9097f35cfffa363ef98823928a330d",
+          "0x16de59092dae5ccf4a1e6439d611fd0653f0bd01",
+          "0x45f783cce6b7ff23b2ab2d70e416cdb7d6055f51",
+          "0x4b5bfd52124784745c1071dcb244c6688d2533d3",
+          "0x4baa77013ccd6705ab0522853cb0e9d453579dd4",
+          "0xf701426b8126bc60530574cecdcb365d47973284",
+          "0x8ad599c3a0ff1de082011efddc58f1908eb6e6d8",
+          "0x8038c01a0390a8c547446a0b2c18fc9aefecc10c",
+          "0xa89bd606d5dadda60242e8dedeebc95c41ad8986",
+          "0xfd609a03b393f1a1cfcacedabf068cad09a924e2",
+          "0x228619cca194fbe3ebeb2f835ec1ea5080dafbb2",
+          "0xeff039c3c1d668f408d09dd7b63008622a77532c",
+          "0x299e254a8a165bbeb76d9d69305013329eea3a3b",
+          "0x8379baa817c5c5ab929b03ee8e3c48e45018ae41",
+          "0x2a537fa9ffaea8c1a41d3c2b68a9cb791529366d",
+          "0xe89a6d0509faf730bd707bf868d9a2a744a363c7",
+          "0x44fbebd2f576670a6c33f6fc0b00aa8c5753b322",
+          "0x8c3b7a4320ba70f8239f83770c4015b5bc4e6f91",
+          "0x797aab1ce7c01eb727ab980762ba88e7133d2157",
+          "0x1f9b4756b008106c806c7e64322d7ed3b72cb284",
+          "0x523effc8bfefc2948211a05a905f761cba5e8e9e",
+          "0x10fdbd1e48ee2fd9336a482d746138ae19e649db",
+          "0x4112a717edd051f77d834a6703a1ef5e3d73387f",
+          "0x6c6bc977e13df9b0de53b251522280bb72383700",
+          "0x1eb4cf3a948e7d72a198fe073ccb8c7a948cd853"
+        ]
+      }
+    ],
+    "attacker_effective": [
+      "0x24354d31bc9d90f62fe5f2454709c32049cf866b",
+      "0x961d2b694d9097f35cfffa363ef98823928a330d"
+    ],
+    "native_balance_diff": {
+      "0x24354d31bc9d90f62fe5f2454709c32049cf866b": {
+        "before_wei": "19441883646940164152",
+        "after_wei": "2770498702405383603295",
+        "delta_wei": "2751056818758443439143",
+        "window": [
+          13499797,
+          13499798
+        ]
+      },
+      "0x961d2b694d9097f35cfffa363ef98823928a330d": {
+        "before_wei": "0",
+        "after_wei": "0",
+        "delta_wei": "0",
+        "window": [
+          13499797,
+          13499798
+        ]
+      }
+    }
+  },
+  {
+    "id": "2022-04-02-inverse-finance",
+    "chain": "ethereum",
+    "txs": [
+      {
+        "hash": "0x20a6dcff06a791a7f8be9f423053ce8caee3f9eecc31df32445fc98d4ccd8365",
+        "note": "price manipulation + oracle update",
+        "status": "success",
+        "block": 14506358,
+        "contract_address": null,
+        "block_ts": 1648897434,
+        "to": "0xea0c959bbb7476ddd6cd4204bdee82b790aa1562",
+        "erc20_flows": {
+          "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2": {
+            "0xea0c959bbb7476ddd6cd4204bdee82b790aa1562": "-500000000000000000000",
+            "0x328dfd0139e26cb0fef7b0742b49b0fe4325f821": "300000000000000000000",
+            "0x397ff1542f962076d0bfe58ea045ffa2d347aca0": "200000000000000000000"
+          },
+          "0x41d5d79431a913c4ae7d69a668ecdfe5ff9dfb68": {
+            "0x328dfd0139e26cb0fef7b0742b49b0fe4325f821": "-374385477084842174221",
+            "0xea0c959bbb7476ddd6cd4204bdee82b790aa1562": "1746437878752304088448",
+            "0x5ba61c0a8c4dcccc200cd0ccc40a5725a426d002": "-1372052401667461914227"
+          },
+          "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48": {
+            "0x397ff1542f962076d0bfe58ea045ffa2d347aca0": "-690307061277",
+            "0xea0c959bbb7476ddd6cd4204bdee82b790aa1562": "0",
+            "0xaa5a67c256e27a5d80712c51971408db3370927d": "690307061277"
+          },
+          "0x865377367054516e17014ccded1e7d814edc9ce4": {
+            "0xaa5a67c256e27a5d80712c51971408db3370927d": "-690203010884231600886834",
+            "0xea0c959bbb7476ddd6cd4204bdee82b790aa1562": "0",
+            "0x5ba61c0a8c4dcccc200cd0ccc40a5725a426d002": "690203010884231600886834"
+          }
+        },
+        "counterparties": [
+          "0xea0c959bbb7476ddd6cd4204bdee82b790aa1562",
+          "0x328dfd0139e26cb0fef7b0742b49b0fe4325f821",
+          "0x397ff1542f962076d0bfe58ea045ffa2d347aca0",
+          "0xaa5a67c256e27a5d80712c51971408db3370927d",
+          "0x5ba61c0a8c4dcccc200cd0ccc40a5725a426d002"
+        ]
+      },
+      {
+        "hash": "0x600373f67521324c8068cfd025f121a0843d57ec813411661b07edc5ff781842",
+        "note": "borrow against inflated xINV",
+        "status": "success",
+        "block": 14506359,
+        "contract_address": null,
+        "block_ts": 1648897449,
+        "to": "0xea0c959bbb7476ddd6cd4204bdee82b790aa1562",
+        "erc20_flows": {
+          "0x41d5d79431a913c4ae7d69a668ecdfe5ff9dfb68": {
+            "0xea0c959bbb7476ddd6cd4204bdee82b790aa1562": "-1746437878752304088448",
+            "0x1637e4e9941d55703a7a5e7807d6ada3f7dcd61b": "1746437878752304088448"
+          },
+          "0x1637e4e9941d55703a7a5e7807d6ada3f7dcd61b": {
+            "0x1637e4e9941d55703a7a5e7807d6ada3f7dcd61b": "-1156068044897457678753",
+            "0xea0c959bbb7476ddd6cd4204bdee82b790aa1562": "1156068044897457678753"
+          },
+          "0x865377367054516e17014ccded1e7d814edc9ce4": {
+            "0x7fcb7dac61ee35b3d4a51117a7c58d53f0a8a670": "-3999669029654761043260989",
+            "0xea0c959bbb7476ddd6cd4204bdee82b790aa1562": "0",
+            "0x8b4c1083cd6aef062298e1fa900df9832c8351b3": "3999669029654761043260989"
+          },
+          "0x2260fac5e5542a773aa44fbcfedf7c193bc2c599": {
+            "0x17786f3813e6ba35343211bd8fe18ec4de14f28b": "-9403071805",
+            "0xea0c959bbb7476ddd6cd4204bdee82b790aa1562": "0",
+            "0x8b4c1083cd6aef062298e1fa900df9832c8351b3": "9403071805"
+          },
+          "0x0bc529c00c6401aef6d220be8c6ea1667f6ad93e": {
+            "0xde2af899040536884e062d3a334f2dd36f34b4a4": "-39368440899328442000",
+            "0xea0c959bbb7476ddd6cd4204bdee82b790aa1562": "0",
+            "0x8b4c1083cd6aef062298e1fa900df9832c8351b3": "39368440899328442000"
+          }
+        },
+        "counterparties": [
+          "0xea0c959bbb7476ddd6cd4204bdee82b790aa1562",
+          "0x1637e4e9941d55703a7a5e7807d6ada3f7dcd61b",
+          "0x7fcb7dac61ee35b3d4a51117a7c58d53f0a8a670",
+          "0x17786f3813e6ba35343211bd8fe18ec4de14f28b",
+          "0xde2af899040536884e062d3a334f2dd36f34b4a4",
+          "0x8b4c1083cd6aef062298e1fa900df9832c8351b3"
+        ]
+      }
+    ],
+    "attacker_effective": [
+      "0x117c0391b3483e32aa665b5ecb2cc539669ea7e9",
+      "0x8b4c1083cd6aef062298e1fa900df9832c8351b3",
+      "0xea0c959bbb7476ddd6cd4204bdee82b790aa1562"
+    ],
+    "native_balance_diff": {
+      "0x117c0391b3483e32aa665b5ecb2cc539669ea7e9": {
+        "before_wei": "1490534400000000000",
+        "after_wei": "904640800000000000",
+        "delta_wei": "-585893600000000000",
+        "window": [
+          14506357,
+          14506359
+        ]
+      },
+      "0x8b4c1083cd6aef062298e1fa900df9832c8351b3": {
+        "before_wei": "38302827691896285471",
+        "after_wei": "1624815923138055382445",
+        "delta_wei": "1586513095446159096974",
+        "window": [
+          14506357,
+          14506359
+        ]
+      },
+      "0xea0c959bbb7476ddd6cd4204bdee82b790aa1562": {
+        "before_wei": "0",
+        "after_wei": "0",
+        "delta_wei": "0",
+        "window": [
+          14506357,
+          14506359
+        ]
+      }
+    }
+  },
+  {
+    "id": "2023-06-12-sturdy-finance",
+    "chain": "ethereum",
+    "txs": [
+      {
+        "hash": "0xeb87ebc0a18aca7d2a9ffcabf61aa69c9e8d3c6efade9e2303f8857717fb9eb7",
+        "note": "flashloan + read-only reentrancy exploit",
+        "status": "success",
+        "block": 17460610,
+        "contract_address": null,
+        "block_ts": 1686531995,
+        "to": "0x0b09c86260c12294e3b967f0d523b4b2bcdfbeab",
+        "erc20_flows": {
+          "0x7f39c581f595b53c5cb19bd0b3f8da6c935e2ca0": {
+            "0x0b925ed163218f6662a35e0f0371ac234f9e9371": "25000000000000000000",
+            "0x0b09c86260c12294e3b967f0d523b4b2bcdfbeab": "0",
+            "0x555003433d6a51e9cc7798752dbdd4ed28d61de5": "-315937627338267634615",
+            "0xa6181b779dc2f93033e82584b692b3714b184163": "-108212588323556772139",
+            "0x89676bef260bbd56dbe97c81300d7a4f63d344d8": "-37068049876449335412",
+            "0x7750f94314a4fe3c78337dd8c9661864c4c77ad6": "-12698054645134207491",
+            "0xf2ea7eacf7b042fd85690d71b9d2957830bdcf02": "-4349906719394583397",
+            "0x0000000000000000000000000000000000000000": "453266226902802533054"
+          },
+          "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2": {
+            "0x4d5f47fa6a74757f35c14fd3a6ef8e3c9bc514e8": "30000000000000000000",
+            "0x0b09c86260c12294e3b967f0d523b4b2bcdfbeab": "-66963505949388725209",
+            "0x555003433d6a51e9cc7798752dbdd4ed28d61de5": "79767512474989592751",
+            "0xa6181b779dc2f93033e82584b692b3714b184163": "-5442688474248983471",
+            "0x89676bef260bbd56dbe97c81300d7a4f63d344d8": "-16979986714122315863",
+            "0x7750f94314a4fe3c78337dd8c9661864c4c77ad6": "-12787008738753146723",
+            "0xf2ea7eacf7b042fd85690d71b9d2957830bdcf02": "-7594322598476421485"
+          },
+          "0x06325440d014e39736583c165c2963ba99faf14e": {
+            "0x0000000000000000000000000000000000000000": "0",
+            "0x0b09c86260c12294e3b967f0d523b4b2bcdfbeab": "0",
+            "0x555003433d6a51e9cc7798752dbdd4ed28d61de5": "0",
+            "0xa6181b779dc2f93033e82584b692b3714b184163": "0",
+            "0x89676bef260bbd56dbe97c81300d7a4f63d344d8": "0",
+            "0x7750f94314a4fe3c78337dd8c9661864c4c77ad6": "0",
+            "0xf2ea7eacf7b042fd85690d71b9d2957830bdcf02": "0"
+          },
+          "0xae7ab96520de3a18e5e111b5eaab095312d7fe84": {
+            "0x7f39c581f595b53c5cb19bd0b3f8da6c935e2ca0": "-511299569030847938221",
+            "0x0b09c86260c12294e3b967f0d523b4b2bcdfbeab": "1",
+            "0xdc24316b9ae028f1497c275eb9192a3ea0f67022": "511299569030847938220"
+          }
+        },
+        "counterparties": [
+          "0x0b925ed163218f6662a35e0f0371ac234f9e9371",
+          "0x0b09c86260c12294e3b967f0d523b4b2bcdfbeab",
+          "0x4d5f47fa6a74757f35c14fd3a6ef8e3c9bc514e8",
+          "0x0000000000000000000000000000000000000000",
+          "0x555003433d6a51e9cc7798752dbdd4ed28d61de5",
+          "0xa6181b779dc2f93033e82584b692b3714b184163",
+          "0x89676bef260bbd56dbe97c81300d7a4f63d344d8",
+          "0x7750f94314a4fe3c78337dd8c9661864c4c77ad6",
+          "0xf2ea7eacf7b042fd85690d71b9d2957830bdcf02",
+          "0x7f39c581f595b53c5cb19bd0b3f8da6c935e2ca0",
+          "0xdc24316b9ae028f1497c275eb9192a3ea0f67022"
+        ]
+      }
+    ],
+    "attacker_effective": [
+      "0x1e8419e724d51e87f78e222d935fbbdeb631a08b",
+      "0x0b09c86260c12294e3b967f0d523b4b2bcdfbeab"
+    ],
+    "native_balance_diff": {
+      "0x1e8419e724d51e87f78e222d935fbbdeb631a08b": {
+        "before_wei": "932308820528904726",
+        "after_wei": "443049911199349421466",
+        "delta_wei": "442117602378820516740",
+        "window": [
+          17460609,
+          17460610
+        ]
+      },
+      "0x0b09c86260c12294e3b967f0d523b4b2bcdfbeab": {
+        "before_wei": "0",
+        "after_wei": "0",
+        "delta_wei": "0",
+        "window": [
+          17460609,
+          17460610
+        ]
+      }
+    }
+  },
+  {
+    "id": "2024-03-05-woofi",
+    "chain": "arbitrum",
+    "txs": [
+      {
+        "hash": "0xe80a16678b5008d5be1484ec6e9e77dc6307632030553405863ffb38c1f94266",
+        "note": "sPMM formula exploit",
+        "status": "success",
+        "block": 187384608,
+        "contract_address": "0x27a116a48c6dd23fc005ea6ea02847723d5b3856",
+        "block_ts": 1709654038,
+        "to": null,
+        "erc20_flows": {
+          "0xcafcd85d8ca7ad1e1c6f82f651fa15e33aefd07b": {
+            "0x2458464afec10e973ac61860718328ce8358be3a": "-887068792564191410725170",
+            "0x9961190b258897bca7a12b8f37f415e689d281c4": "887068792564191410725170"
+          }
+        },
+        "counterparties": [
+          "0x2458464afec10e973ac61860718328ce8358be3a",
+          "0x9961190b258897bca7a12b8f37f415e689d281c4"
+        ]
+      }
+    ],
+    "attacker_effective": [
+      "0x9961190b258897bca7a12b8f37f415e689d281c4",
+      "0x27a116a48c6dd23fc005ea6ea02847723d5b3856"
+    ],
+    "native_balance_diff": {
+      "0x9961190b258897bca7a12b8f37f415e689d281c4": {
+        "error": "arbitrum eth_getBalance failed via all endpoints: http 403"
+      },
+      "0x27a116a48c6dd23fc005ea6ea02847723d5b3856": {
+        "error": "arbitrum eth_getBalance failed via all endpoints: http 403"
+      }
+    }
+  },
+  {
+    "id": "2026-03-22-resolv",
+    "chain": "ethereum",
+    "txs": [
+      {
+        "hash": "0xfe37f25efd67d0a4da4afe48509b258df48757b97810b28ce4c649658dc33743",
+        "note": "first completeSwap tx",
+        "status": "success",
+        "block": 24710031,
+        "contract_address": null,
+        "block_ts": 1774146095,
+        "to": "0xa27a69ae180e202fde5d38189a3f24fe24e55861",
+        "erc20_flows": {},
+        "counterparties": []
+      },
+      {
+        "hash": "0x41b6b9376d174165cbd54ba576c8f6675ff966f17609a7b80d27d8652db1f18f",
+        "note": "second completeSwap tx",
+        "status": "success",
+        "block": 24710428,
+        "contract_address": null,
+        "block_ts": 1774150907,
+        "to": "0xa27a69ae180e202fde5d38189a3f24fe24e55861",
+        "erc20_flows": {},
+        "counterparties": []
+      }
+    ],
+    "attacker_effective": [
+      "0x15cad41e6bdcad7121ce65080489c92cf6de398"
+    ],
+    "native_balance_diff": {
+      "0x15cad41e6bdcad7121ce65080489c92cf6de398": {
+        "error": "ethereum eth_getBalance failed via all endpoints: http 403"
+      }
+    }
+  }
+]
